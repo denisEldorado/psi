@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/psi">
+    <Resources cachingAllowed="true" cacheMaxSize="1000000"/>
+<!--    <Resources className="org.apache.catalina.webresources.StandardRoot">
+        <PreResources className="org.apache.catalina.webresources.DirResourceSe"
+                      base="/home/ngatia/files/" webAppMount="/WEB-INF/classes/static/uploads/" />
+    </Resources>-->
+</Context>
+

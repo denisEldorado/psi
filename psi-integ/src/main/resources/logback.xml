@@ -1,0 +1,31 @@
+<configuration>
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener"/>
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+        <resetJUL>true</resetJUL>
+    </contextListener>
+
+    <!-- To enable JMX Management -->
+    <jmxConfigurator/>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date|%.-1level|INTEG|%-30.30logger{0}\(%line\)|%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.muhia.app.psi.integ" level="info"/>
+    <logger name="org.springframework.ws.client.MessageTracing.sent" level="TRACE"/>
+    <logger name="org.springframework.ws.client.MessageTracing.received" level="TRACE"/>
+    <logger name="org.springframework.ws.server.MessageTracing" level="TRACE"/>
+    <logger name="org.muhia.app.psi.infra" level="info"/>
+    <logger name="org.muhia.app.psi.integ" level="info"/>
+    <logger name="org.muhia.app.psi.config" level="info"/>
+    <logger name="org.springframework" level="info"/>
+    <logger name="org.freemarker" level="info"/>
+
+    <!--<include resource="logToFile.xml" />-->
+
+    <root level="off">
+        <appender-ref ref="console"/>
+    </root>
+</configuration>

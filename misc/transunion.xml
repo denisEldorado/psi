@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header>
+        <ns2:Header xmlns:ns2="http://ws.crbws.transunion.ke.co/">
+            <crbName>name1</crbName>
+            <pdfId>1</pdfId>
+            <reportType>Query</reportType>
+            <requester>Bsk</requester>
+        </ns2:Header>
+    </SOAP-ENV:Header>
+    <SOAP-ENV:Body>
+        <ns3:getProduct102 xmlns:ns3="http://ws.crbws.transunion.ke.co/">
+            <username>WS_BSK1</username>
+            <password>mnqRuv</password>
+            <code>2104</code>
+            <infinityCode>ke123456789</infinityCode>
+            <nationalID>ID79903</nationalID>
+            <reportReason>1</reportReason>
+        </ns3:getProduct102>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

@@ -1,0 +1,192 @@
+ID,USSD_CODE_IMSI,MENU_KEY,MENU_ACTION,MENU_NEXT_ID,MENU_PARAMETER,MENU_IS_CHOICE,MENU_CONDITION,STATUS,CREATEDBY,CREATEDON,MODIFIEDBY,MODIFIEDON,DELETEBY,DELETEDON,TEXT_VAR_1,TEXT_VAR_2,TEXT_VAR_3,TEXT_VAR_4,TEXT_VAR_5,TEXT_VAR_6,MENU_SESSION_END,SECURE_MENU,POST_PROCESSING_INFO,PRE_PROCESSING_INFO,FTU
+130,5,entryPoint,welcomeMessage,,,0,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Welcome to Maisha Akiba Account,Sacco,,,,,N,N,,,1
+131,5,entryPoint,nextMenu,akibaRegistration,,1,cellphonenumber,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Register,Jiandikishe,,,,,N,N,,,1
+132,5,entryPoint,nextMenu,cancelMenu,,1,cellphonenumber,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Cancel,Account,,,,,Y,N,,,1
+133,5,akibaRegistration,termAndConditions,,,0,cellphonenumber,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,I agree to the terms and conditions at http://www.maishabank.com,,,,,,N,N,,,1
+134,5,akibaRegistration,nextMenu,akibaRegistrationFname,1,1,acceptedTerms,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Yes,Jiandikishe,,,,,N,N,,,1
+135,5,akibaRegistration,nextMenu,cancelMenu,0,1,acceptedTerms,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,No,Account,,,,,Y,N,,,1
+136,5,akibaRegistrationFname,nextMenu,akibaRegistrationLname,,0,firstname,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Enter Your First Name as per ID,,,,,,N,N,,,1
+137,5,akibaRegistrationLname,nextMenu,akibaRegistrationMname,,0,lastname,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Enter Your Last Name as per ID,,,,,,N,N,,,1
+138,5,akibaRegistrationMname,nextMenu,idTypeListing,,0,middlename,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,"Enter Your Middle Name as per ID, 0 to skip",,,,,,N,N,,,1
+139,5,idTypeListing,nextMenu,,,0,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Select Document Type,,,,,,N,N,,,1
+140,5,idTypeListing,nextMenu,akibaRegistrationIDNo,NationalIDNo,1,idnumbertype,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,National ID,,,,,,N,N,,,1
+141,5,idTypeListing,nextMenu,akibaRegistrationIDNo,AlienIDNo,1,idnumbertype,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Alien ID,,,,,,N,N,,,1
+142,5,akibaRegistrationIDNo,nextMenu,saveConfirmRegister,,0,idnumber,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Enter ID Number,,,,,,N,N,,,1
+143,5,saveConfirmRegister,confirmMemberRegistration,confirmRegister,,0,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,"You will be registered as {2} {3} {4}, ID/PP#: {6}",,,,,,N,N,,,1
+144,5,saveConfirmRegister,acceptConfirmRegister,notifyRegistrationConfirm,18,1,productid,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Confirm,,,,,,N,N,,,1
+145,5,saveConfirmRegister,cancelConfirmRegister,cancelMenu,,1,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Cancel,,,,,,N,N,,,1
+146,5,notifyRegistrationConfirm,nextMenu,registeredEntryPoint,,0,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,"Your request is being processed, you will receive confirmation via SMS shortly","Your request is being processed, you will receive confirmation via SMS shortly",,,,,Y,N,,,1
+147,5,oldPassword,oldPassword,changePassword,,0,oldOtpPin,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Enter Your PIN,Old pin,,,,,N,N,,,0
+148,5,changePassword,changePin,confirmPassword,,0,newOtpPin,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Enter New PIN,,,,,,N,N,,,0
+149,5,confirmPassword,confirmPin,confirmPinChange,,0,confirmNewOtpPin,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Confirm your New PIN,,,,,,N,N,,,0
+150,5,confirmPinChange,confirmPinMenu,,,0,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Your PIN will be changed,,,,,,Y,N,,,0
+151,5,confirmPinChange,acceptConfirmPin,notifyPinChange,2,1,productid,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Confirm,,,,,,N,N,,,0
+152,5,confirmPinChange,declinePinChange,entryPoint,,1,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Cancel,,,,,,N,N,,,0
+153,5,registeredEntryPoint,nextMenu,maishaAkibaAdvance,,1,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Akiba Advance,,,,,,N,Y,,,0
+154,5,registeredEntryPoint,nextMenu,maishaAkibaSavings,,1,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Savings Account,,,,,,N,Y,,,0
+155,5,registeredEntryPoint,nextMenu,maishaAkibaFixedDeposit,,1,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Fixed Deposit,,,,,,N,Y,,,0
+156,5,maishaAkibaAdvance,nextMenu,maishaAkibaAdvanceRequest,,1,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Advance Request,,,,,,N,Y,,,0
+157,5,maishaAkibaAdvance,nextMenu,maishaAkibaAdvanceRepayLoan,,1,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Repay Loan,,,,,,N,Y,,,0
+158,5,maishaAkibaAdvance,nextMenu,maishaAkibaAdvanceLoanBalance,,1,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Loan Balance,,,,,,N,Y,,,0
+159,5,maishaAkibaAdvance,nextMenu,maishaAkibaAdvanceLoanLimit,,1,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,My Loan Limit,,,,,,N,Y,,,0
+160,5,maishaAkibaSavings,nextMenu,maishaAkibaSavingsAccountBalance,,1,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Account Balance,,,,,,N,Y,,,0
+161,5,maishaAkibaSavings,nextMenu,maishaAkibaSavingsMinistatement,,1,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Mini-Statement,,,,,,N,Y,,,0
+162,5,maishaAkibaFixedDeposit,nextMenu,maishaAkibaFixedDepositCreate,,1,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Create Fixed Deposit,,,,,,N,Y,,,0
+163,5,maishaAkibaFixedDeposit,nextMenu,maishaAkibaFixedDepositMaturity,,1,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Check Maturity Date,,,,,,N,Y,,,0
+164,5,maishaAkibaFixedDeposit,nextMenu,maishaAkibaFixedDepositInterestRates,,1,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Interest Rates Table,,,,,,N,Y,,,0
+165,5,maishaAkibaFixedDeposit,nextMenu,maishaAkibaFixedDepositUnlock,,1,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Unlock Money,,,,,,N,Y,,,0
+166,5,maishaAkibaAdvanceRequest,nextMenu,maishaAkibaAdvanceRequestSelectDuration,,0,loanAmount,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Enter Loan Amount,,,,,,N,Y,,,0
+167,5,maishaAkibaAdvanceRequestSelectDuration,nextMenu,,,0,loanDuration,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Select the Period,,,,,,N,Y,,,0
+168,5,maishaAkibaAdvanceRequestSelectDuration,nextMenu,maishaAkibaAdvanceRequestConfirm,7,1,loanDuration,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,7 Days,,,,,,N,Y,,,0
+169,5,maishaAkibaAdvanceRequestSelectDuration,nextMenu,maishaAkibaAdvanceRequestConfirm,14,1,loanDuration,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,14 Days,,,,,,N,Y,,,0
+170,5,maishaAkibaAdvanceRequestSelectDuration,nextMenu,maishaAkibaAdvanceRequestConfirm,30,1,loanDuration,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,30 Days,,,,,,N,Y,,,0
+171,5,maishaAkibaAdvanceRequestConfirm,nextMenu,,,0,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Request loan of {0} @ {1} for {2},,,,,,N,Y,,,0
+172,5,maishaAkibaAdvanceRequestConfirm,nextMenu,maishaAkibaAdvanceRequestNotify,,1,productid,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Confirm,,,,,,N,Y,,,0
+173,5,maishaAkibaAdvanceRequestConfirm,nextMenu,cancelMenu,,1,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Decline,,,,,,N,Y,,,0
+174,5,maishaAkibaAdvanceRequestNotifyLimitOk,nextMenu,,,0,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,"Your request is being processed, you will receive confirmation via SMS shortly",,,,,,Y,Y,,,0
+175,5,maishaAkibaAdvanceRequestNotifyLimitNOk,nextMenu,,,1,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,"Dear customer you do not qualify for the amount applied for, Your advance limit is {0} for {1}",,,,,,N,Y,,,0
+176,5,maishaAkibaAdvanceRequestNotifyLimitNOk,nextMenu,maishaAkibaAdvanceRequestSelectDuration,,1,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Advance Request,,,,,,N,Y,,,0
+177,5,maishaAkibaAdvanceRequestNotifyLimitNOk,nextMenu,cancelMenu,,1,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Exit,,,,,,Y,Y,,,0
+178,5,maishaAkibaAdvanceRequest,nextMenu,maishaAkibaAdvanceRepayLoan,,2,loanAmount,10,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Enter Loan Amount,,,,,,N,Y,,,0
+96,1,notifyGuarantorApprove,notifyGuarantorApprove,,,0,,1,admin,,admin,,admin,,Request to approve Guarantor request is being processed.You will receive an sms,Request to approve Guarantor request is being processed.You will receive an sms,,,,,Y,N,,,0
+97,1,notifyGuarantorDecline,notifyGuarantorDecline,,,0,,1,admin,,admin,,admin,,Request to approve Guarantor request is being processed.You will receive an sms,Request to approve Guarantor request is being processed.You will receive an sms,,,,,Y,N,,,0
+98,1,notifyConfirmSavings,notifyConfirmSavings,,,0,,1,admin,,admin,,admin,,Request to create savings is being processed. You will receive an sms shortly,Request to create savings is being processed. You will receive an sms shortly,,,,,Y,N,,,0
+101,1,saccoChoice,chooseSacco,saveConfirmRegister,2,1,saccoChoice,0,admin,,admin,,admin,,Sacco two,Sacco two,,,,,N,N,,,0
+102,1,saccoChoice,chooseSacco,saveConfirmRegister,3,1,saccoChoice,0,admin,,admin,,admin,,Sacco Three,Sacco Three,,,,,N,N,,,0
+103,1,saccoChoice,chooseSacco,saveConfirmRegister,4,1,saccoChoice,0,admin,,admin,,admin,,Sacco Four,Sacco Four,,,,,N,N,,,0
+104,1,saccoChoice,chooseSacco,saveConfirmRegister,5,1,saccoChoice,0,admin,,admin,,admin,,Sacco Five,Sacco Five,,,,,N,N,,,0
+105,1,saccoChoice,chooseSacco,saveConfirmRegister,6,1,saccoChoice,0,admin,,admin,,admin,,Invite your Sacco,Invite your Sacco,,,,,N,N,,,0
+126,1,errorMenu,displayError,,,0,,1,admin,,admin,,admin,,"Your request could not be processed at the moment, try again later",Jaribu tena baadaye,,,,,Y,N,,,0
+127,1,missingMenu,displayError,,,0,,1,admin,,admin,,admin,,Requested option not found,Hamna kitu,,,,,Y,N,,,0
+128,1,notEligible,displayError,notEligible,,0,,1,admin,,admin,,admin,,You are not eligible,Hauna ruhusa...,,,,,Y,N,,,0
+1,1,entryPoint,nextMenu,saccoRegistration,,0,,1,admin,,admin,,admin,,M - RAFIKI,Sacco,,,,,N,N,,,0
+2,1,entryPoint,nextMenu,saccoRegistrationName,,1,cellphonenumber,1,admin,,admin,,admin,,Registration,Jiandikishe,,,,,N,N,,,0
+3,1,entryPoint,logIn,inputPassword,,1,cellphonenumber,1,admin,,admin,,admin,,Account,Account,,,,,N,N,,,0
+4,1,entryPoint,nextMenu,saccoRafiki,,1,cellphonenumber,0,admin,,admin,,admin,,Refer Rafiki,Refer Rafiki,,,,,N,N,,,0
+5,1,saccoRegistrationName,registerName,idTypeListing,,0,fullname,1,admin,,admin,,admin,,Enter Your Name,Weka Jina,,,,,N,N,,,0
+6,1,idTypeListing,,,,0,,1,admin,,admin,,admin,,Select Document Type,Select Document Type,,,,,N,N,,,0
+7,1,idTypeListing,saveSelectedIdType,saccoRegistrationIDNo,NationalIDNo,1,idnumbertype,1,admin,,admin,,admin,,National ID,National ID,,,,,N,N,,,0
+8,1,idTypeListing,saveSelectedIdType,saccoRegistrationIDNo,PassportNo,1,idnumbertype,1,admin,,admin,,admin,,Passport,Passport,,,,,N,N,,,0
+9,1,idTypeListing,saveSelectedIdType,saccoRegistrationIDNo,DrivingLicence,1,idnumbertype,1,admin,,admin,,admin,,Driving License,Driving License,,,,,N,N,,,0
+10,1,saccoRegistrationIDNo,nextMenu,saveConfirmRegister,,0,idnumber,1,admin,,admin,,admin,,Enter ID Number,Enter ID Number,,,,,N,N,,,0
+11,1,saveConfirmRegister,confirmMemberRegistration,confirmRegister,,0,,1,admin,,admin,,admin,,"You have asked to register on {0} as {1}, ID#: {2}","You have asked to register on {0} as {1}, ID#: {2}",,,,,N,N,,,0
+12,1,saveConfirmRegister,acceptConfirmRegister,notifyRegistrationConfirm,1,1,productid,1,admin,,admin,,admin,,Confirm,Confirm,,,,,N,N,,,0
+13,1,saveConfirmRegister,cancelConfirmRegister,entryPoint,,1,,1,admin,,admin,,admin,,Cancel,Cancel,,,,,N,N,,,0
+14,1,saccoAccount,nextMenu,saccoLoan,,1,menuchoice,1,admin,,admin,,admin,,Apply for loan,Kopa,,,,,N,N,,,0
+15,1,saccoAccount,nextMenu,saccoSetTargets,,1,menuchoice,0,admin,,admin,,admin,,Set savings target,Savings Target,,,,,N,N,,,0
+16,1,saccoAccount,nextMenu,saccoViewTargets,viewTarget,1,menuchoice,0,admin,,admin,,admin,,View set targets,Savings Target,,,,,N,N,,,0
+17,1,saccoRafiki,nextMenu,saccoRafikiNumber,,1,menuchoice,0,admin,,admin,,admin,,menuchoice,Invite Rafiki,,,,,N,N,,,0
+18,1,saccoRafikiNumber,nextMenu,confirmRafikiNumber,,1,rafikinumber,1,admin,,admin,,admin,,menuchoice,Sacco Loans,,,,,N,N,,,0
+19,1,confirmRafikiNumber,nextMenu,entryPoint,,0,rafikinumber,1,admin,,admin,,admin,,You have chosen to invite {1},You have chosen to invite {1},,,,,N,N,,,0
+20,1,confirmRafikiNumber,acceptRafikiNumber,entryPoint,,1,,1,admin,,admin,,admin,,Confirm,Confirm,,,,,N,N,,,0
+21,1,confirmRafikiNumber,cancelRafikiNumber,entryPoint,,1,,1,admin,,admin,,admin,,Cancel,Cancel,,,,,N,N,,,0
+22,1,notifyRegistrationConfirm,nextMenu,saccoAccount,,0,,1,admin,,admin,,admin,,"Your request is being processed, you will receive confirmation via SMS shortly","Your request is being processed, you will receive confirmation via SMS shortly",,,,,Y,N,,,0
+23,1,saccoLoan,nextMenu,saveConfirmLoan,,0,amountloaned,1,admin,,admin,,admin,,Requested loan amount,"Your request is being processed, you will receive confirmation via SMS shortly",,,,,Y,N,,,0
+24,1,saveConfirmLoan,confirmLoanMenu,confirmLoan,confirmLoan,0,confirmLoan,1,admin,,admin,,admin,,Request a loan of {1},Request a loan of {1},,,,,N,N,,,0
+25,1,saveConfirmLoan,acceptConfirmLoan,notifyConfirmLoan,4,1,productid,1,admin,,admin,,admin,,Confirm,Confirm,,,,,N,N,,,0
+26,1,saveConfirmLoan,cancelConfirmLoan,entryPoint,,1,,1,admin,,admin,,admin,,Cancel,Cancel,,,,,N,N,,,0
+27,1,saccoSetTargets,saccoSetTargets,savingsTarget,,0,,1,admin,,admin,,admin,,What are you saving for?,What are you saving for?,,,,,N,N,,,0
+28,1,saccoSetTargets,saccoSetTargets,savingsTarget,1,1,type,1,admin,,admin,,admin,,Holiday,Holiday,,,,,N,N,,,0
+29,1,saccoSetTargets,saccoSetTargets,savingsTarget,3,1,type,1,admin,,admin,,admin,,School fees,School fees,,,,,N,N,,,0
+30,1,saccoSetTargets,saccoSetTargets,savingsTarget,2,1,type,1,admin,,admin,,admin,,Car,Car ,,,,,N,N,,,0
+47,1,saccoSetTargets,saccoSetTargets,savingsTarget,4,1,type,1,admin,,admin,,admin,,Land,Land,,,,,N,N,,,0
+31,1,saccoSetTargets,saccoSetTargets,savingsTarget,5,1,type,1,admin,,admin,,admin,,Other,Other,,,,,N,N,,,0
+32,1,savingsTarget,savingsTarget,savingsInterval,,0,target,1,admin,,admin,,admin,,Savings Target,Savings Target,,,,,N,N,,,0
+33,1,savingsInterval,savingsInterval,savingsAmount,0,0,intervals,1,admin,,admin,,admin,,Savings Interval,Savings Interval,,,,,N,N,,,0
+34,1,savingsInterval,savingsInterval,savingsAmount,1,1,interval,1,admin,,admin,,admin,,Daily,Daily,,,,,N,N,,,0
+35,1,savingsInterval,savingsInterval,savingsAmount,2,1,interval,1,admin,,admin,,admin,,Weekly,Weekly,,,,,N,N,,,0
+36,1,savingsInterval,savingsInterval,savingsAmount,3,1,interval,1,admin,,admin,,admin,,Monthly,Monthly,,,,,N,N,,,0
+37,1,savingsAmount,savingsAmount,savingsConfirm,,0,amount,1,admin,,admin,,admin,,What to save each interval,What to save each interval,,,,,N,N,,,0
+38,1,savingsConfirm,savingsConfirm,nextMenu,7,0,productid,1,admin,,admin,,admin,,"Savings Target : Ksh {0}, deposits Ksh {1} ","Savings Target : Ksh {0}, deposits Ksh {1} ",,,,,N,N,,,0
+39,1,savingsConfirm,savingsConfirm,notifyConfirmSavings,notifyConfirmSavings,1,notifyConfirmSavings,1,admin,,admin,,admin,,Confirm,Confirm,,,,,N,N,,,0
+40,1,savingsConfirm,savingsConfirm,saccoAccount,cancel,1,,1,admin,,admin,,admin,,Cancel,Cancel,,,,,N,N,,,0
+41,1,addBen,addBeneficiary,benId,name,0,beneficiary,1,admin,,admin,,admin,,Beneficiary fullname,Beneficiary fullname,,,,,N,N,,,0
+42,1,addId,benId,benPhone,id,0,beneficiaryId,1,admin,,admin,,admin,,Beneficiary ID,Beneficiary ID,,,,,N,N,,,0
+43,1,addPhone,benPhone,ConfirmBen,,0,beneficiaryphone,1,admin,,admin,,admin,,Beneficiary phonenumber,Beneficiary phonenumber,,,,,N,N,,,0
+44,1,benConfirm,ConfirmBen,,,0,,1,admin,,admin,,admin,,"Create {1}, ID {2} and phone {3} as Beneficiary","Create {1}, ID {2} and phone {3} as Beneficiary",,,,,N,N,,,0
+45,1,benConfirm,ConfirmBen,nextMenu,yes,1,confirm,1,admin,,admin,,admin,,Confirm,,,,,,N,N,,,0
+46,1,benConfirm,ConfirmBen,nextMenu,cancel,1,cancel,1,admin,,admin,,admin,,Cancel,,,,,,N,N,,,0
+49,1,saccoLoans,typeLoanMenu,confirmLoanMenu,,0,,0,admin,,admin,,admin,,Request Loan from :,Request Loan from :,,,,,N,N,,,0
+50,1,saccoLoans,LoanFromSacco,saccoLoan,loanSacco,1,saccoLoan,0,admin,,admin,,admin,,Sacco,Sacco,,,,,N,N,,,0
+51,1,saccoLoans,LoanFromRafiki,rafikiLoan,loanRafiki,1,rafikiLoan,0,admin,,admin,,admin,,Rafiki,Rafiki,,,,,N,N,,,0
+52,1,rafikiLoan,saveRafiki,rafikiLoanAmount,,0,lenderphone,1,admin,,admin,,admin,,Rafiki phonenumber,Rafiki phonenumber,,,,,N,N,,,0
+53,1,rafikiLoanAmount,saveAmount,saveRafikiLoan,,0,amountloaned,1,admin,,admin,,admin,,Loan amount,Loan amount,,,,,N,N,,,0
+54,1,saveRafikiLoan,confirmRafikiLoan,confirmRafikiMenu,8,0,productid,1,admin,,admin,,admin,,Request a loan of {1} from {2},Request a loan of {1} from {2},,,,,N,N,,,0
+55,1,saveRafikiLoan,acceptRafikiLoan,notifyRafikiLoan,,1,,1,admin,,admin,,admin,,Confirm,Confirm,,,,,N,N,,,0
+56,1,saveRafikiLoan,declineRafikiLoan,entryPoint,,1,,1,admin,,admin,,admin,,Cancel,Cancel,,,,,N,N,,,0
+57,1,notifyRafikiLoan,nextMenu,,,0,,1,admin,,admin,,admin,,"Your request is being processed, you will receive confirmation via SMS shortly","Your request is being processed, you will receive confirmation via SMS shortly",,,,,Y,N,,,0
+107,1,saccoAccount,saccoChoice,rafikiSend,rafikiSend,1,rafikiSend,1,admin,,admin,,admin,,Send to M-Rafiki,Send to M-Rafiki,,,,,N,N,,,0
+106,1,saccoAccount,saccoChoice,rafikiBalance,rafikiBalance,1,rafikiBalance,1,admin,,admin,,admin,,M-Rafiki,M-Rafiki,,,,,N,N,,,0
+108,1,saccoAccount,saccoChoice,rafikiWithdraw,rafikiWithdraw,1,rafikiWithdraw,1,admin,,admin,,admin,,Withdraw from M-rafiki,Withdraw from M-rafiki,,,,,N,N,,,0
+109,1,saccoAccount,saccoChoice,loanLimit,12,1,productid,1,admin,,admin,,admin,,Check loan limit,Check loan limit,,,,,N,N,,,0
+110,1,saccoAccount,saccoChoice,payLoan,17,1,productid,1,admin,,admin,,admin,,Pay loan,Pay loan,,,,,N,N,,,0
+111,1,rafikiBalance,rafikiBalance,mpesaPin,16,1,productid,1,admin,,admin,,admin,,Ministatement,Ministatement,,,,,N,N,,,0
+112,1,rafikiBalance,rafikiBalance,mpesaPin,15,1,productid,1,admin,,admin,,admin,,Check Balance,Check Balance,,,,,N,N,,,0
+113,1,mpesaPin,mpesaPin,processRequest,,0,mpesapin,1,admin,,admin,,admin,,Enter your mpesa pin,Enter your mpesa pin,,,,,N,N,,,0
+114,1,processRequest,processRequest,,,0,,1,admin,,admin,,admin,,Your request is being processed,Your request is being processed,,,,,Y,N,,,0
+115,1,rafikiSend,rafikiSend,sendConfirm,,0,depositAmount,1,admin,,admin,,admin,,Amount to deposit,Amount to deposit,,,,,N,N,,,0
+116,1,sendConfirm,sendConfirmMenu,,,0,,1,admin,,admin,,admin,,Send {0} to M-Rafiki?,Send {0} to M-Rafiki?,,,,,N,N,,,0
+117,1,sendConfirm,acceptSend,processRequest,13,1,productid,1,admin,,admin,,admin,,Confirm,Confirm,,,,,N,N,,,0
+118,1,sendConfirm,declineSend,entryPoint,no,1,cancel,1,admin,,admin,,admin,,cancel,cancel,,,,,N,N,,,0
+119,1,rafikiWithdraw,rafikiWithdraw,withdrawConfirm,,0,withdrawAmount,1,admin,,admin,,admin,,Amount to withdraw,Amount to withdraw,,,,,N,N,,,0
+120,1,withdrawConfirm,withdrawConfirmMenu,,,0,,1,admin,,admin,,admin,,Withdraw {0} from M-Rafiki?,Withdraw {0} from M-Rafiki?,,,,,N,N,,,0
+121,1,withdrawConfirm,acceptWithdraw,processRequest,14,1,productid,1,admin,,admin,,admin,,Confirm,Confirm,,,,,N,N,,,0
+122,1,withdrawConfirm,declineWithdraw,entryPoint,,1,,1,admin,,admin,,admin,,cancel,cancel,,,,,N,N,,,0
+123,1,loanLimit,loanLimit,,,0,,1,admin,,admin,,admin,,Your request is being processed.,Your request is being processed.,,,,,Y,N,,,0
+48,1,notifyConfirmLoan,nextMenu,,,0,,1,admin,,admin,,admin,,"Your request is being processed, you will receive confirmation via SMS shortly","Your request is being processed, you will receive confirmation via SMS shortly",,,,,Y,N,,,0
+58,1,inputPassword,login,saccoAccount,,0,password,1,admin,,admin,,admin,,Password :,Password :,,,,,N,N,,,0
+65,1,changePassword,changePin,confirmPassword,,0,newOtpPin,1,admin,,admin,,admin,,New pin,New pin,,,,,N,N,,,0
+62,1,confirmPassword,confirmPin,confirmPinChange,,0,confirmNewOtpPin,1,admin,,admin,,admin,,confirm pin,confirm pin,,,,,N,N,,,0
+63,1,notifyPinChange,notifyPinChange,,,0,,1,admin,,admin,,admin,,Request to change pin is being processed,Request to change pin is being processed,,,,,Y,N,,,0
+71,1,saccoAccount,viewLoans,viewLoan,viewLoan,1,viewLoan,0,admin,,admin,,admin,,View loan requests,view loan requests,,,,,N,N,,,0
+67,1,oldPassword,oldPassword,changePassword,,0,oldOtpPin,1,admin,,admin,,admin,,Old pin,Old pin,,,,,N,N,,,0
+68,1,confirmPinChange,confirmPinMenu,confirmPinMenu,,0,,1,admin,,admin,,admin,,Confirm new pin as {2}?,Confirm new pin as {2}?,,,,,N,N,,,0
+69,1,confirmPinChange,acceptConfirmPin,notifyPinChange,2,1,productid,1,admin,,admin,,admin,,Confirm,Confirm,,,,,N,N,,,0
+70,1,confirmPinChange,declinePinChange,entryPoint,,1,,1,admin,,admin,,admin,,cancel,Cancel,,,,,N,N,,,0
+99,1,saccoChoice,chooseSacco,,,0,,1,admin,,admin,,admin,,Choose your Sacco,Choose your Sacco,,,,,N,N,,,0
+73,1,saccoAccount,approveLoans,approveLoan,approveLoan,1,menuchoice,0,admin,,admin,,admin,,Rafiki Loan requests,Rafiki Loan requests,,,,,N,N,,,0
+100,1,saccoChoice,chooseSacco,saveConfirmRegister,1,1,saccoChoice,1,admin,,admin,,admin,,Sacco One,Sacco One,,,,,N,N,,,0
+75,1,approveDeclineLoan,approveDeclineLoanMenu,,9,0,productid,1,admin,,admin,,admin,,Approve loan request of {1} from {2},Approve loan request of {1} from {2},,,,,N,N,,,0
+76,1,approveDeclineLoan,approveLoanAction,approveLessLoan,approveLessLoan,1,approveLessLoan,1,admin,,admin,,admin,,Approve loan,Approve loan,,,,,N,N,,,0
+77,1,approveDeclineLoan,declineLoanAction,notifyDeclineLoan,10,1,productid,1,admin,,admin,,admin,,Decline loan,Decline loan,,,,,N,N,,,0
+78,1,notifyApproveLoan,notifyApproveLoan,,,0,,1,admin,,admin,,admin,,Request to approve loan  is being processed,Request to approve loan  is being processed,,,,,Y,N,,,0
+79,1,notifyDeclineLoan,notifyDeclineLoan,,,0,,1,admin,,admin,,admin,,Request to decline loan request  is being processed,Request to decline loan request  is being processed,,,,,Y,N,,,0
+85,1,addGuarantor,guarantorPhone,amountRequested,,0,phonenumber,1,admin,,admin,,admin,,Rafiki phonenumber,Rafiki phonenumber,,,,,N,N,,,0
+81,1,approveLessLoan,approveLessLoan,applyInterest,,0,amountapproved,1,admin,,admin,,admin,,Confirm amount willing to loan,Confirm amount willing to loan,,,,,N,N,,,0
+82,1,applyInterest,applyInterest,,,0,,1,admin,,admin,,admin,,Apply interest?,Apply interest?,Apply interest?,,,,N,N,,,0
+83,1,applyInterest,applyInterest,notifyApproveLoan,true,1,interest,1,admin,,admin,,admin,,Yes,Yes,Yes,,,,N,N,,,0
+84,1,applyInterest,applyInterest,notifyApproveLoan,false,1,interest,1,admin,,admin,,admin,,No,No,No,,,,N,N,,,0
+86,1,amountRequested,amountRequested,confirmGuarantor,,0,amountrequested,1,admin,,admin,,admin,,amount to be guaranteed,amount to be guaranteed,,,,,N,N,,,0
+87,1,confirmGuarantor,confirmGuarantorMenu,,,0,,1,admin,,admin,,admin,,Request guarantor {2} for {1},Request guarantor {2} for {1},,,,,N,N,,,0
+88,1,confirmGuarantor,acceptConfirmGuarantor,notifyConfirmGuarantor,3,1,productid,1,admin,,admin,,admin,,Accept,Accept,,,,,N,N,,,0
+89,1,confirmGuarantor,cancelConfirmGuarantor,notifyGuarantorDecline,,1,cancel guarantor,1,admin,,admin,,admin,,Decline,Decline,,,,,N,N,,,0
+90,1,notifyConfirmGuarantor,notifyConfirmGuarantor,,,0,,1,admin,,admin,,admin,,Request to be guaranteed is being processed,Request to be guaranteed is being processed,,,,,Y,N,,,0
+91,1,saccoAccount,approveGuarantors,approveGuarantor,approveGuarantor,1,approveGuarantor,0,admin,,admin,,admin,,Rafiki guarantor requests,Rafiki guarantor requests,,,,,N,N,,,0
+92,1,approveDeclineGuarantor,approveGuarantorMenu,,5,0,productid,1,admin,,admin,,admin,,Approve guarantee request of {1} from {2},Approve guarantee request of {1} from {2},,,,,N,N,,,0
+93,1,approveDeclineGuarantor,acceptApproveGuarantor,approveAmount,approveAmount,1,approveAmount,1,admin,,admin,,admin,,Approve,Approve,,,,,N,N,,,0
+94,1,approveDeclineGuarantor,declineApproveGuarantor,notifyGuarantorDecline,6,1,productid,1,admin,,admin,,admin,,Decline,Decline,,,,,N,N,,,0
+95,1,approveAmount,approveGamount,notifyGuarantorApprove,,0,amountapproved,1,admin,,admin,,admin,,Confirm amount to guarantee,Confirm amount to guarantee,,,,,N,N,,,0
+179,5,maishaAkibaAdvanceRepayLoan,nextMenu,enterPin,,0,pinnumber,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Enter PIN Number,,,,,,N,Y,,,0
+180,5,maishaAkibaAdvanceRequestNotifyLimitOk,nextMenu,,,0,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,"Thank you for repaying Kshs ? to your loan account, your loan balance is ?.",,,,,,Y,Y,,,0
+181,5,maishaAkibaAdvanceRequest,nextMenu,maishaAkibaAdvanceLoanBalance,,3,loanBalance,10,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Dear customer you don?t have an active running advance,,,,,,N,Y,,,0
+182,5,maishaAkibaAdvanceLoanBalance,nextMenu,maishaAkibaAdvanceRequest,,1,advanceRequest,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,"Your request is being processed, you will receive confirmation via SMS shortly",,,,,,N,Y,,,0
+183,5,maishaAkibaAdvanceRequest,nextMenu,maishaAkibaMyAdvanceLimit,,2,advanceLimit,10,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Your current advanced balance is Kshs ? due on ?.,,,,,,N,Y,,,0
+184,5,maishaAkibaMyAdvanceLimit,nextMenu,maishaAkibaAdvanceRepayLoan,,1,repayLoan,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Enter Loan Amount,,,,,,N,Y,,,0
+185,5,maishaAkibaAdvanceRequest,nextMenu,maishaAkibaAdvanceRequestMyLoanLimit,,4,loanLimit,10,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Dear customer your loan limit is Kshs {0} @ {1} for {2},,,,,,N,Y,,,0
+186,5,maishaAkibaAdvanceRequestMyLoanLimit,nextMenu,cancelMenu,,2,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Exit,,,,,,Y,Y,,,0
+187,5,maishaAkibaSavingsAccountWithdrawal,withdrawalAmount,enterPin,,0,pinnumber,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Enter withdrawal Amount,,,,,,N,Y,,,0
+188,5,maishaAkibaSavingsAccountWithdrawal,confirmWithdrawal,,,0,withdrawalAmount,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,"Your request is being processed, you will receive confirmation via SMS shortly",,,,,,Y,Y,,,0
+189,5,maishaAkibaSavingsAccountBalance,nextMenu,maishaAkibaAccountBalanceRequest,,0,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Dear customer your loan balance is kshs ?. Thank you for banking with Maisha,,,,,,Y,Y,,,0
+190,5,maishaAkibaSavingsMinistatement,nextMenu,continue,,1,requestMinistatement,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Mini-Statement request costs kshs 5,,,,,,Y,Y,,,0
+191,5,maishaAkibaSavingsMinistatementRequestContinue,nextMenu,cancelMenu,,2,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Exit,,,,,,Y,Y,,,0
+192,5,maishaAkibaAdvanceRequest,nextMenu,maishaAkibaAdvanceLockMoneyRequest,,1,lockMoney,10,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Dear customer select to transfer money from Maisha Akiba or Airtel Money,,,,,,N,Y,,,0
+193,5,maishaAkibaAdvanceLockMoneyRequest,nextMenu,transferMoneyFrom,,1,fromMaishaAkiba,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Enter Amount,,,,,,N,Y,,,0
+194,5,maishaAkibaAdvanceLockMoneyTransferFrom,nextMenu,transferMoneyFrom,,2,fromAirtelMoney,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Enter Amount,,,,,,N,Y,,,0
+195,5,maishaAkibaAdvanceLockMoneyTransferFrom,nextMenu,EnterPeriod 1-12 months,,0,durationInMonths,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Enter PIN Number,,,,,,N,Y,,,0
+196,5,maishaAkibaAdvanceMaturity,nextMenu,maishaAkibaFixedDepositInterestRates,,1,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Dear customer you have kshs ?. locked for a period of ? months maturing on ?.,,,,,,Y,Y,,,0
+197,5,maishaAkibaFixedDepositInterestRates,nextMenu,maishaAkibaFixedDepositUnlock,,1,fixRates,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Dear customer you have locked kshs ?. for a period of ? months from today. Maturity is on ?,,,,,,Y,Y,,,0
+198,5,maishaAkibaFixedDepositUnlock,nextMenu,enterPin,,0,pinnumber,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,"Dear customer your request is being processed, you will receive confirmation via SMS shortly",,,,,,Y,Y,,,0
+199,5,registeredEntryPoint,welcomeMessage,,,0,,1,admin,2017-03-22 00:00:00,muhia,2017-03-22 00:00:00,muhia,,Welcome to Maisha Akiba Account,Sacco,,,,,N,N,,,0
+200,5,notifyPinChange,notifyPinChange,registeredEntryPoint,,0,,1,admin,,admin,,admin,,Request to change pin is being processed,Request to change pin is being processed,,,,,Y,N,,,0
+201,5,missingMenu,displayError,,,0,,1,admin,,admin,,admin,,Requested option not found,Hamna kitu,,,,,Y,N,,,0
+202,5,inputPassword,nextMenu,registeredEntryPoint,,0,password,1,admin,,admin,,admin,,Password :,Password :,,,,,N,N,,,0

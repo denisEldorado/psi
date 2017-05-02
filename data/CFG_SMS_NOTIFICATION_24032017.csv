@@ -1,0 +1,22 @@
+﻿ID,DESCRIPTION,PLACE_HOLDER1,PLACE_HOLDER2,PLACE_HOLDER3,PLACE_HOLDER4,PLACE_HOLDER5,STATUS,CREATION_DATE,LAST_UPDATE_DATE,LAST_UPDATE_BY,EXPIRYDATE_FORMAT,SENDER
+45,Dear customer you have successfully been registered with Maisha Akiba. Your PIN is {0},otp,,,,,1,24-Mar-17,,1,,MaishaAkiba
+46,"Dear customer your Request has not been processed, check your registration details and try again or contact customer care",fullname,,,,,1,24-Mar-17,,1,,MaishaAkiba
+47,Incorrect PIN please try again,pinnumber,,,,,1,24-Mar-17,,1,,MaishaAkiba
+48,"Dear Customer you have 0 attempts remaining, your account has been locked. Contact customer service {0}",pinnumber,phonenumber,,,,1,24-Mar-17,,1,,MaishaAkiba
+49,Dear customer your Advance request is being processed.,amountrequest,loanperiod,,,,1,24-Mar-17,,1,,MaishaAkiba
+50,Dear Customer your loan request of {1} is being processed,amountrequest,,,,,1,24-Mar-17,,1,,MaishaAkiba
+51,"Dear customer, your Advance request was successful. You have received kshs {0} for {1} days due on {3}",amountloaned,validity,duedate,,,1,24-Mar-17,,1,,MaishaAkiba
+52,"Dear customer, your Maisha Akiba account has been credited with kshs {0}. Your available balance is kshs {1} ",amountcredited,accountbalance,,,,1,24-Mar-17,,1,,MaishaAkiba
+53,Dear Customer you do not qualify for the amount applied for. Your advance limit is kshs {0} for {1} days.,loanlimit,validity,,,,1,24-Mar-17,,1,,MaishaAkiba
+54,"Dear customer, thank you for repaying kshs {0} to your loan account. Your loan balance is kshs {1}",amountapproved,accountbalance,,,,1,24-Mar-17,,1,,MaishaAkiba
+55,"Dear {1}, your transaction of kshs {2} from Maisha Akiba has been processed. Available balance kshs {3} ref no {4}",firstname,transactionamount,accountbalance,ticketnumber,,1,24-Mar-17,,1,,MaishaAkiba
+56,"Dear Customer, you don’t have an active running Advance.",loanamount,phonenumber,failed,,,1,24-Mar-17,,1,,MaishaAkiba
+57,Dear Customer your current balance is kshs {0} due on {1}.,accountbalance,duedate,,,,1,24-Mar-17,,1,,MaishaAkiba
+58,Dear Customer your loan limit is kshs {0} for a period of {2},loanlimit,phonenumber,,,,1,24-Mar-17,,1,,MaishaAkiba
+59,"Dear Customer, your Withdrawal request is being processed. You will receive a confirmation via SMS shortly.",withdrawalrequest,phonenumber,,,,1,24-Mar-17,,1,,MaishaAkiba
+60,Confirmed. Kshs.{0} transferred to Maisha Akiba account on {1}. New Maisha Akiba account balance is Kes {2}.,withdrawalamount,duedate,accountbalance,,,1,24-Mar-17,,1,,MaishaAkiba
+61,Dear Customer your loan balance is kshs {0}. Thank you for banking with Maisha,accountbalance,,,,,1,24-Mar-17,,1,,MaishaAkiba
+62,"Dear Customer, your request is being processed. Mini-Statement request costs {0}",statementcharge,,,,,1,24-Mar-17,,1,,MaishaAkiba
+63,Dear Customer you have kshs {0} locked for a period of {1} Months from today. Maturity is on {2},amountlocked,lockmonths,maturitydate,,,1,24-Mar-17,,1,,MaishaAkiba
+64,"Dear Customer, you do not have an active fixed deposit.",,,,,,1,24-Mar-17,,1,,MaishaAkiba
+65,"Dear Customer, your request for unlocking kshs {0} is being processed. You will receive a confirmation via SMS shortly.",amountunlocked,,,,,1,24-Mar-17,,1,,MaishaAkiba

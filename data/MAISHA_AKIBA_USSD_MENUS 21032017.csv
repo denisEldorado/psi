@@ -1,0 +1,70 @@
+ID,USSD_CODE_IMSI,MENU_KEY,MENU_ACTION,MENU_NEXT_ID,MENU_PARAMETER,MENU_IS_CHOICE,MENU_CONDITION,STATUS,CREATEDBY,CREATEDON,MODIFIEDBY,MODIFIEDON,DELETEBY,DELETEDON,TEXT_VAR_1,TEXT_VAR_2,TEXT_VAR_3,TEXT_VAR_4,TEXT_VAR_5,TEXT_VAR_6,MENU_SESSION_END,SECURE_MENU,POST_PROCESSING_INFO,PRE_PROCESSING_INFO,No. Chars
+130,5,entryPoint,welcomeMessage,,,0,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Welcome to Maisha Akiba Account,Sacco,,,,,N,N,,,31
+131,5,entryPoint,nextMenu,akibaRegistration,,1,cellphonenumber,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Register,Jiandikishe,,,,,N,N,,,8
+132,5,entryPoint,nextMenu,cancelMenu,,1,cellphonenumber,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Cancel,Account,,,,,Y,N,,,6
+133,5,akibaRegistration,termAndConditions,,,0,cellphonenumber,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,I agree to the terms and conditions at http://www.maishabank.com,,,,,,N,N,,,64
+134,5,entryPoint,nextMenu,akibaRegistrationFname,,1,agreeterms,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Yes,Jiandikishe,,,,,N,N,,,3
+135,5,entryPoint,nextMenu,cancelMenu,,1,disagreeterms,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,No,Account,,,,,Y,N,,,2
+136,5,akibaRegistrationFname,nextMenu,akibaRegistrationLname,,0,firstname,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Enter Your First Name as per ID,,,,,,N,N,,,31
+137,5,akibaRegistrationLname,nextMenu,akibaRegistrationMname,,0,lastname,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Enter Your Last Name as per ID,,,,,,N,N,,,30
+138,5,akibaRegistrationMname,nextMenu,idTypeListing,,0,middlename,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,"Enter Your Middle Name as per ID, 0 to skip",,,,,,N,N,,,43
+139,5,idTypeListing,nextMenu,,,0,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Select Document Type,,,,,,N,N,,,20
+140,5,idTypeListing,nextMenu,akibaRegistrationIDNo,NationalIDNo,1,idnumbertype,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,National ID,,,,,,N,N,,,11
+141,5,idTypeListing,nextMenu,akibaRegistrationIDNo,AlienIDNo,1,idnumbertype,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Alien ID,,,,,,N,N,,,8
+142,5,akibaRegistrationIDNo,nextMenu,saveConfirmRegister,,,idnumber,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Enter ID Number,,,,,,N,N,,,15
+143,5,saveConfirmRegister,confirmMemberRegistration,confirmRegister,,0,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,"You will be registered as {0}, ID/PP#: {1}",,,,,,N,N,,,42
+144,5,saveConfirmRegister,acceptConfirmRegister,notifyRegistrationConfirm,1,1,productid,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Confirm,,,,,,N,N,,,7
+145,5,saveConfirmRegister,cancelConfirmRegister,cancelMenu,,1,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Cancel,,,,,,N,N,,,6
+146,5,notifyRegistrationConfirm,nextMenu,registeredEntryPoint,,0,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,"Your request is being processed, you will receive confirmation via SMS shortly","Your request is being processed, you will receive confirmation via SMS shortly",,,,,Y,N,,,78
+147,5,oldPassword,oldPassword,changePassword,,0,oldOtpPin,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Enter Your PIN,Old pin,,,,,N,N,,,14
+148,5,changePassword,changePin,confirmPassword,,0,newOtpPin,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Enter New PIN,,,,,,N,N,,,13
+149,5,confirmPassword,confirmPin,confirmPinChange,,0,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Confirm your New PIN,,,,,,N,N,,,20
+150,5,confirmPinChange,confirmPinMenu,confirmPinMenu,,0,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Your PIN will be changed,,,,,,N,N,,,24
+151,5,confirmPinChange,acceptConfirmPin,notifyPinChange,2,1,productid,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Confirm,,,,,,N,N,,,7
+152,5,confirmPinChange,declinePinChange,entryPoint,,1,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Cancel,,,,,,N,N,,,6
+153,5,registeredEntryPoint,nextMenu,maishaAkibaAdvance,,1,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Akiba Advance,,,,,,N,Y,,,13
+154,5,registeredEntryPoint,nextMenu,maishaAkibaSavings,,1,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Savings Account,,,,,,N,Y,,,15
+155,5,registeredEntryPoint,nextMenu,maishaAkibaFixedDeposit,,1,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Fixed Deposit,,,,,,N,Y,,,13
+156,5,maishaAkibaAdvance,nextMenu,maishaAkibaAdvanceRequest,,1,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Advance Request,,,,,,N,Y,,,15
+157,5,maishaAkibaAdvance,nextMenu,maishaAkibaAdvanceRepayLoan,,1,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Repay Loan,,,,,,N,Y,,,10
+158,5,maishaAkibaAdvance,nextMenu,maishaAkibaAdvanceLoanBalance,,1,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Loan Balance,,,,,,N,Y,,,12
+159,5,maishaAkibaAdvance,nextMenu,maishaAkibaAdvanceLoanLimit,,1,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,My Loan Limit,,,,,,N,Y,,,13
+160,5,maishaAkibaSavings,nextMenu,maishaAkibaSavingsAccountBalance,,1,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Account Balance,,,,,,N,Y,,,15
+161,5,maishaAkibaSavings,nextMenu,maishaAkibaSavingsMinistatement,,1,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Mini-Statement,,,,,,N,Y,,,14
+162,5,maishaAkibaFixedDeposit,nextMenu,maishaAkibaFixedDepositCreate,,1,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Create Fixed Deposit,,,,,,N,Y,,,20
+163,5,maishaAkibaFixedDeposit,nextMenu,maishaAkibaFixedDepositMaturity,,1,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Check Maturity Date,,,,,,N,Y,,,19
+164,5,maishaAkibaFixedDeposit,nextMenu,maishaAkibaFixedDepositInterestRates,,1,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Interest Rates Table,,,,,,N,Y,,,20
+165,5,maishaAkibaFixedDeposit,nextMenu,maishaAkibaFixedDepositUnlock,,1,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Unlock Money,,,,,,N,Y,,,12
+166,5,maishaAkibaAdvanceRequest,nextMenu,maishaAkibaAdvanceRequestSelectDuration,,0,loanAmount,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Enter Loan Amount,,,,,,N,Y,,,17
+167,5,maishaAkibaAdvanceRequestSelectDuration,nextMenu,,,0,loanDuration,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Select the Period,,,,,,N,Y,,,17
+168,5,maishaAkibaAdvanceRequestSelectDuration,nextMenu,maishaAkibaAdvanceRequestConfirm,7,1,loanDuration,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,7 Days,,,,,,N,Y,,,6
+169,5,maishaAkibaAdvanceRequestSelectDuration,nextMenu,maishaAkibaAdvanceRequestConfirm,14,1,loanDuration,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,14 Days,,,,,,N,Y,,,7
+170,5,maishaAkibaAdvanceRequestSelectDuration,nextMenu,maishaAkibaAdvanceRequestConfirm,30,1,loanDuration,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,30 Days,,,,,,N,Y,,,7
+171,5,maishaAkibaAdvanceRequestConfirm,nextMenu,,,0,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Request loan of {0} @ {1} for {2},,,,,,N,Y,,,33
+172,5,maishaAkibaAdvanceRequestConfirm,nextMenu,maishaAkibaAdvanceRequestNotify,,1,productid,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Confirm,,,,,,N,Y,,,7
+173,5,maishaAkibaAdvanceRequestConfirm,nextMenu,cancelMenu,,1,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Decline,,,,,,N,Y,,,7
+174,5,maishaAkibaAdvanceRequestNotifyLimitOk,nextMenu,,,0,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,"Your request is being processed, you will receive confirmation via SMS shortly",,,,,,Y,Y,,,78
+175,5,maishaAkibaAdvanceRequestNotifyLimitNOk,nextMenu,,,1,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,"Dear customer you do not qualify for the amount applied for, Your advance limit is {0} for {1}",,,,,,N,Y,,,94
+176,5,maishaAkibaAdvanceRequestNotifyLimitNOk,nextMenu,maishaAkibaAdvanceRequestSelectDuration,,1,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Advance Request,,,,,,N,Y,,,15
+177,5,maishaAkibaAdvanceRequestNotifyLimitNOk,nextMenu,cancelMenu,,1,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Exit,,,,,,Y,Y,,,4
+178,5,maishaAkibaAdvanceRequest,nextMenu,maishaAkibaAdvanceRepayLoan,,2,loanAmount,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Enter Loan Amount,,,,,,N,Y,,,17
+179,5,maishaAkibaAdvanceRepayLoan,nextMenu,enterPin,,0,pinnumber,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Enter PIN Number,,,,,,N,Y,,,16
+180,5,maishaAkibaAdvanceRequestNotifyLimitOk,nextMenu,,,0,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,"Thank you for repaying Kshs ? to your loan account, your loan balance is ?.",,,,,,Y,Y,,,75
+181,5,maishaAkibaAdvanceRequest,nextMenu,maishaAkibaAdvanceLoanBalance,,3,loanBalance,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Dear customer you don?t have an active running advance,,,,,,N,Y,,,54
+182,5,maishaAkibaAdvanceLoanBalance,nextMenu,maishaAkibaAdvanceRequest,,1,advanceRequest,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,"Your request is being processed, you will receive confirmation via SMS shortly",,,,,,N,Y,,,78
+183,5,maishaAkibaAdvanceRequest,nextMenu,maishaAkibaMyAdvanceLimit,,2,advanceLimit,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Your current advanced balance is Kshs ? due on ?.,,,,,,N,Y,,,49
+184,5,maishaAkibaMyAdvanceLimit,nextMenu,maishaAkibaAdvanceRepayLoan,,1,repayLoan,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Enter Loan Amount,,,,,,N,Y,,,17
+185,5,maishaAkibaAdvanceRequest,nextMenu,maishaAkibaAdvanceRequestMyLoanLimit,,4,loanLimit,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Dear customer your loan limit is Kshs {0} @ {1} for {2},,,,,,N,Y,,,55
+186,5,maishaAkibaAdvanceRequestMyLoanLimit,nextMenu,cancelMenu,,2,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Exit,,,,,,Y,Y,,,4
+187,5,maishaAkibaSavingsAccountWithdrawal,withdrawalAmount,enterPin,,0,pinnumber,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Enter withdrawal Amount,,,,,,N,Y,,,23
+188,5,maishaAkibaSavingsAccountWithdrawal,confirmWithdrawal,,,0,withdrawalAmount,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,"Your request is being processed, you will receive confirmation via SMS shortly",,,,,,Y,Y,,,78
+189,5,maishaAkibaSavingsAccountBalance,nextMenu,maishaAkibaAccountBalanceRequest,,0,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Dear customer your loan balance is kshs ?. Thank you for banking with Maisha,,,,,,Y,Y,,,76
+190,5,maishaAkibaSavingsMinistatement,nextMenu,continue,,1,requestMinistatement,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Mini-Statement request costs kshs 5,,,,,,Y,Y,,,35
+191,5,maishaAkibaSavingsMinistatementRequestContinue,nextMenu,cancelMenu,,2,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Exit,,,,,,Y,Y,,,4
+192,5,maishaAkibaAdvanceRequest,nextMenu,maishaAkibaAdvanceLockMoneyRequest,,1,lockMoney,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Dear customer select to transfer money from Maisha Akiba or Airtel Money,,,,,,N,Y,,,72
+193,5,maishaAkibaAdvanceLockMoneyRequest,nextMenu,transferMoneyFrom,,1,fromMaishaAkiba,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Enter Amount,,,,,,N,Y,,,12
+194,5,maishaAkibaAdvanceLockMoneyTransferFrom,nextMenu,transferMoneyFrom,,2,fromAirtelMoney,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Enter Amount,,,,,,N,Y,,,12
+195,5,maishaAkibaAdvanceLockMoneyTransferFrom,nextMenu,EnterPeriod 1-12 months,,0,durationInMonths,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Enter PIN Number,,,,,,N,Y,,,16
+196,5,maishaAkibaAdvanceMaturity,nextMenu,maishaAkibaFixedDepositInterestRates,,1,,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Dear customer you have kshs ?. locked for a period of ? months maturing on ?.,,,,,,Y,Y,,,77
+197,5,maishaAkibaFixedDepositInterestRates,nextMenu,maishaAkibaFixedDepositUnlock,,1,fixRates,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,Dear customer you have locked kshs ?. for a period of ? months from today. Maturity is on ?,,,,,,Y,Y,,,91
+198,5,maishaAkibaFixedDepositUnlock,nextMenu,enterPin,,0,pinnumber,1,admin,22-Mar-17,muhia,22-Mar-17,muhia,,"Dear customer your request is being processed, you will receive confirmation via SMS shortly",,,,,,Y,Y,,,92

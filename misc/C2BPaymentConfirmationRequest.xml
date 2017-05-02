@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <soapenv:Body>
+        <ns1:C2BPaymentConfirmationRequest xmlns:ns1="http://cps.huawei.com/cpsinterface/c2bpayment">
+            <TransType>Pay Bill</TransType>
+            <TransID>LCA618MKDW</TransID>
+            <TransTime>20170310111304</TransTime>
+            <TransAmount>70.00</TransAmount>
+            <BusinessShortCode>880072</BusinessShortCode>
+            <BillRefNumber>3742101</BillRefNumber>
+            <InvoiceNumber>0</InvoiceNumber>
+            <OrgAccountBalance>1610.00</OrgAccountBalance>
+            <MSISDN>254708374149</MSISDN>
+            <KYCInfo>
+                <KYCName>[Personal Details][First Name]</KYCName>
+                <KYCValue>CV5 1</KYCValue>
+            </KYCInfo>
+            <KYCInfo>
+                <KYCName>[Personal Details][Last Name]</KYCName>
+                <KYCValue>CV5 1</KYCValue>
+            </KYCInfo>
+        </ns1:C2BPaymentConfirmationRequest>
+    </soapenv:Body>
+</soapenv:Envelope>

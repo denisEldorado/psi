@@ -1,0 +1,357 @@
+MOMA DATA WAREHOUSEMOMA DATA WAREHOUSEMOMA DATA WAREHOUSEMOMA DATA WAREHOUSE MOMA DATA WAREHOUSEMOMA DATA WAREHOUSE MOMA DATA WAREHOUSE MOMA DATA WAREHOUSEMOMA DATA WAREHOUSEMOMA DATA WAREHOUSE
+ii
+Revision Sheet
+Release No. Date Revision Description
+Ver. 1
+03/08/2016
+User’s Manual Created
+Ver. 2
+15/09/2016
+Adjusted Manual to Include Bank to Wallet
+Ver. 3
+19/09/2016
+Revised to include record IDs
+Ver. 4
+26/09/2016
+Revised all APIs to adopt the changed data set.
+Ver. 5
+06/12/2016
+Adopted RESTful API
+iii
+USER'S MANUAL
+TABLE OF CONTENTS
+Page #
+GENERAL INFORMATION .................................................................................................... 1
+1.1 System Overview .................................................................................................... 1
+1.2 Acronyms and Abbreviations ................................................................................. 1
+SYSTEM SUMMARY .............................................................................................................. 1
+2.1 System Configuration ............................................................................................. 1
+2.2 User Access Levels .................................................................................................. 1
+GETTING STARTED .............................................................................................................. 1
+3.1 Getting Setup .......................................................................................................... 1
+3.2 Creating the Web Service Call ................................................................................. 1
+USING the data access module ............................................................................................. 1
+4.1 Transaction Summary .................................................................................................. 1
+4.3 Itemised GSM (GSM_Itemised) .................................................................................. 3
+4.4 Itemised Airtel Money ................................................................................................ 4
+4.5 GSM By Service ........................................................................................................... 5
+4.6 Airtel Money by Product ............................................................................................. 7
+PROCESSED DATA SUBMISSION ......................................................................................... 1
+5.1 Connection ............................................................................................................. 1
+5.2 Format .................................................................................................................... 1
+5.3 Submission ............................................................................................................. 1
+1
+1.0 GENERAL INFORMATION
+1
+GENERAL INFORMATION
+1.1 SYSTEM OVERVIEW
+The Airtel Money - MoMa Data Warehouse is a data repository created by Airtel as part of one of its services. The repository contains all transaction data for Airtel Money subscribers, this data includes data elements from registration to daily wallet transactions and expenditure on the general GSM network.
+Airtel has collated formatted and systematically presented this data in order to offer meaningful information to a number of other institutional data users who might find it useful for their key business purposes. The data can primarily be used for the purposes of rating and scoring individual subscribers to assess risk and ascertain suitability of conducting business with them. Services like credit facilities can be awarded to deserving subscribers after analyzing their transaction trend on the Airtel channels.
+The system is a data warehouse that is published to data users for them to extract client records for rating. The data users will have an interface to submit rating results back to the data warehouse.
+The data is housed on the Airtel Data Warehouse, which is a robust repository of data which is based on a client server architecture. The Airtel data warehouse has two main modules namely the data repository and the data access module. The data repository is a de-normalised data schema storing all the subscriber related data. The data access module is a web based portal that enables access to the data repository through web services.
+1.2 ACRONYMS AND ABBREVIATIONS
+DW – Data Warehouse, where all the subscriber records will be stored.
+GSM- Global System for Mobile communications, for voice and SMS services.
+URL – Uniform Resource Locator
+JSON – JavaScript Object Notation
+1
+2.0 SYSTEM SUMMARY
+1
+SYSTEM SUMMARY
+2.1 SYSTEM CONFIGURATION
+The Data Access module is a web service that is hosted and published for institutional data users to access by way of method calls. The web service will have various methods that are set to perform different fetch and store functions. The fetch methods will enable the user to send data retrieval requests to the data warehouse and they will get a response in the form a Json Object.
+The store method is a method that will be called by the data users to send back processed information to the data warehouse. This processed information will be used by the MoMa systems for the subsequent processes.
+2.2 USER ACCESS LEVELS
+The interactions between the MoMa Data Warehouse and the data users will be entirely electronic through the published web service and method calls. Each institutional data user will be allocated a username and password that they will use when they call the web service methods.
+1
+3.0 GETTING STARTED
+1
+GETTING STARTED
+3.1 GETTING SETUP
+Potential Institutional Data Users must approach Airtel Money for the service. Upon signing up with Airtel, a profile for the institution will be created and a URL for the access will be sent to the contact person.
+3.2 CREATING THE WEB SERVICE CALL
+Airtel will provide the url to the web service that will house the various methods that will be called by the data users’ systems. For example, http://172.23.97.246/MomaDW
+There are various programs or restful clients for consuming RESTful API. Some are
+1. Postman
+2. Boomerang
+Follow the hyperlink for instructions on how to use them
+However, there are a number of other programming languages that can be used to call the service depending on the institutional data users’ core systems.
+2
+4.0 USING THE DATA ACCESS MODULE
+1
+USING THE DATA ACCESS MODULE
+The data access module is a web based platform designed for real time access by data users for retrieving data and submitting processed information including the scores and offered values. This section will deal with the data retrieval methods and section 5 will focus on the methods for re-submission of scoring information.
+The following is the list of all available data retrieval methods-:
+1. Trans_Summary
+2. GSM_Geo
+3. GSM_Itemised
+4. AM_Itemised
+5. GSM_by_Service
+6. AM_by_Product
+Each method expects parameters in the form of-:
+1. Selection Criteria -: each method call will have a set of preset selection criteria whose values must be specified when calling the method.
+2. Partner’s username and password -: each partner will be provided with their own set of credentials which they must use when interacting with the exposed methods of the web service.
+4.1 TRANSACTION SUMMARY
+This method call will retain a summary of all subscriber transactional and service data held over a selected
+period. The method call will retain the descriptive data of the account as follows-:
+Date line was activated
+Account type (pre-paid or postpaid)
+Most Frequent Location (base station)
+Additionally, the method call will retain transactional summaries for the following transactions-:
+Total GSM Expenditure
+Total AM Debits
+Total AM Credits
+Total SMS
+Total USSD
+Total Voice Calls
+Total Roaming Call Forwarding
+Total Content Download
+Total Hybrid Bundles
+Total MMS
+Total Call Forwarding
+Total GPRS
+Total Data
+Total Cash In
+Total Cash Out
+Total AM Top-up
+Total Merchant Payments
+2
+Total P2P
+Total Wallet Load
+Total POS Withdrawal
+REST Call
+URL:http://172.23.97.246/MomaDW/Gsm/TransactionSummary
+REQUEST TYPE: POST
+Parameters Name Data Type Condition Description Example fromDate string
+mandatory
+Lower date range
+2016-08-30 toDate string
+mandatory
+Upper date range
+2016-09-30 username string
+mandatory
+Username
+Escrow password string
+mandatory
+Password
+123@admin
+Results
+Data will be returned in a JSON Object with the following items RecordID AccountType TotalGSMExpenditure TotalAMDebits TotalAMCredits TotalSMS TotalUSSD TotalVoiceCalls TotalRoamingCF TotalContentDownload TotalHybridBundles TotalMMS TotalCF TotalGPRS TotalData TotalCashIn TotalCashOut TotalAMTopup TotalMerchantPayments TotalP2P TotalWalletLoad TotalPOSWithdrawal
+3
+Some messages which can be returned are Message Reason No data was found
+When no data was found for the entered details Invalid credentials
+When the credentials supplied are incorrect Invalid To Date
+When toDate is not recognized as date Invalid From Date
+When fromDate is not recognized as date
+4.3 ITEMISED GSM (GSM_ITEMISED)
+This method call will retain all the GSM services accessed by the subscriber over the specified period. The data retained will be as follows-:
+Service Type
+Service Category
+Total Usage
+REST Call
+URL: http://172.23.97.246/MomaDW/Gsm/GsmItemised
+e.g.
+http://localhost/MomaDW/Gsm/GsmItemised?username=Escrow&password=1234&fromDate=2016-08-30&todate=2016-11-30
+REQUEST TYPE: POST
+Parameters Name Data Type Condition Description Example fromDate string
+mandatory
+Lower date range
+2016-08-30 toDate string
+mandatory
+Upper date range
+2016-09-30 username string
+mandatory
+Username
+Escrow password string
+mandatory
+Password
+123@admin
+Results
+Data will be returned in a JSON Object with the following items Item AccountId TransactionType Timestamp GrossAmount
+4
+Some messages which can be returned are Message Reason No data was found
+When no data was found for the entered details Invalid credentials
+When the credentials supplied are incorrect Enter valid Account Id
+When the Account ID is bank or empty Invalid To Date
+When toDate is not recognized as date Invalid From Date
+When fromDate is not recognized as date
+4.4 ITEMISED AIRTEL MONEY
+This method call will retain every single Airtel Money transaction executed by the subscriber over the selected period. The following are the details retained.
+Date
+Transaction Type
+Time
+Amount
+REST Call
+URL: http://172.23.97.246/MomaDW/AirtelMoney/ItemisedAirtelMoney
+e.g. http://localhost/MomaDW/AirtelMoney/ItemisedAirtelMoney?username=Escrow&password=1234&fromDate=2016-08-30&todate=2016-12-30
+REQUEST TYPE: POST
+Parameters Name Data Type Condition Description Example fromDate string
+mandatory
+Lower date range
+2016-08-30 toDate string
+mandatory
+Upper date range
+2016-09-30 username string
+mandatory
+Username
+Escrow password string
+mandatory
+Password
+123@admin
+Data will be returned in a JSON Object with the following items Item AccountId TransactionType Timestamp GrossAmount
+5
+Some messages which can be returned are Message Reason No data was found
+When no data was found for the entered details Invalid credentials
+When the credentials supplied are incorrect Enter valid Account Id
+When the Account ID is bank or empty Invalid To Date
+When toDate is not recognized as date Invalid From Date
+When fromDate is not recognized as date
+4.5 GSM BY SERVICE
+The data users will be allowed to drill into GSM transactions of their choice to retrieve those accounts that match their selection criteria. Options available to drill down on are-:
+• SMS
+• USSD
+• Voice Calls
+• Roaming Call Forwarding
+• Content Download
+• Hybrid Bundles
+• MMS
+• Forwarding
+• GPRS
+• Data
+Codes for Services
+• 405:SMS
+• 422: USSD
+• 424: Voice Calls
+• 6058: Roaming Call Forwarding
+• 425: Content Download
+• 426: Hybrid Bundles
+• 406: MMS
+• 417: Forwarding
+• 419: GPRS
+• 418: Data
+REST Call
+URL: http://172.23.97.246/MomaDW/Gsm/GsmByService
+6
+E.g. http://localhost/MomaDW/Gsm/GsmByService?username=Escrow&password=1234&fromDate=2016-08-30&todate=2016-11-30&serviceName=405&minimum=10000&maximum=20000
+REQUEST TYPE: POST
+Parameters Name Data Type Condition Description Example fromDate string
+mandatory
+Lower date range
+2016-08-30 toDate string
+mandatory
+Upper date range
+2016-09-30 serviceName string
+mandatory
+The service Code
+405 SMS username string
+mandatory
+Username
+Escrow password string
+mandatory
+Password
+123@admin minimum string
+mandatory
+The minimum value
+20 maximum string
+mandatory
+The maximum value
+40
+Results
+Data will be returned in a JSON Object with the following items Item AccountId TransactionType Timestamp GrossAmount
+Some messages which can be returned are Message Reason No data was found
+When no data was found for the entered details Invalid credentials
+When the credentials supplied are incorrect Enter valid service code
+When the service code is not found in the list above Invalid To Date
+When toDate is not recognized as date Invalid From Date
+When fromDate is not recognized as date Enter valid Maximum amount
+When the enter value for maximum amount is not recognized as a digit Enter Valid Minimum Amount
+When the enter value for minimum amount is not recognized as a digit
+7
+4.6 AIRTEL MONEY BY PRODUCT
+Data users will be able to retrieve Airtel Money data usage per product. Products available for retrieval are
+• Top-Up => TOPUP
+• Cash In => CASHIN
+• Cash Out => CASHOUT
+• Merchant Payments => PAYMERC
+• P2P => P2P
+• Wallet Load => WTLOAD
+• POS Withdrawal => POSWD
+REST Call
+URL: http://172.23.97.246/MomaDW/AirtelMoney/AirtelMoneyByProduct
+e.g.
+http://localhost/MomaDW/AirtemMoney/AirtelMoneyByProduct?username=Escrow&password=1234&fromDate=2016-06-30&todate=2016-11-30&minimum=10000&maximum=20000&product=CASHOUT
+REQUEST TYPE: POST
+Parameters Name Data Type Condition Description Example fromDate string
+mandatory
+Lower date range
+2016-08-30 toDate string
+mandatory
+Upper date range
+2016-09-30 minimum string
+mandatory
+The minimum value
+20 maximum string
+mandatory
+The maximum value
+40 product string
+mandatory
+The product
+TOPUP username string
+mandatory
+Username
+Escrow password string
+mandatory
+Password
+123@admin
+Data will be returned in a JSON Object with the following items Item AccountId TransactionType GrossAmount
+Possible error messages that will be returned are
+8
+Message Reason No data was found
+When no data was found for the entered details Invalid credentials
+When the credentials supplied are incorrect Enter valid Maximum amount
+When the enter value for maximum amount is not recognized as a digit Enter Valid Minimum Amount
+When the enter value for minimum amount is not recognized as a digit Invalid To Date
+When toDate is not recognized as date Invalid From Date
+When fromDate is not recognized as date Please enter valid products
+When product is not in the list above
+1
+5.0 Processed Data Submission
+1
+PROCESSED DATA SUBMISSION
+The above data extraction will be based on Data Warehouse generated record ID and data users are expected to maintain these Record IDs. After rating and processing the records, all data users will re-submit the processed information back to the Data Warehouse.
+5.1 CONNECTION
+Airtel will provide on the same web service, a method that will be called by the data users to submit their scored and processed records.
+This method is called Submit_Results.
+5.2 FORMAT
+Submit_Results will take the following parameters.
+i. Record_ID
+ii. RatingNarration
+iii. Score
+iv. Amount Offered
+5.3 SUBMISSION
+The data users’ systems must submit each record separately and loop through the records until the last record has been submitted. (each record must invoke the method call)
+REST Call
+URL: http://172.23.97.246/MomaDW/Gsm/SubmitResults
+e.g.
+http://localhost/MomaDW/Gsm/SubmitResults?username=Escrow&password=1234&AccountId =1234&RatingNarration=good& Score =90&AmountOffered =20000&Name =Philip
+REQUEST TYPE: POST
+Parameters Name Data Type Condition Description Example AccountId string
+mandatory
+The account id
+12345678 RatingNarration string
+mandatory
+Rating Narration
+Good Score string
+mandatory
+Score
+40% AmountOffered string
+mandatory
+Th amount offers
+2000
+2
+Name string
+mandatory
+Name of the loan Provider
+Philip
+3
+***End***

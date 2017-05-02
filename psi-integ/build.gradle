@@ -1,0 +1,89 @@
+configurations {
+    jaxb
+}
+description = projectIntegArtifcatId
+
+jar {
+	manifest {
+		attributes 'Main-Class': projectIntegMainClass
+	}
+    baseName = projectIntegArtifcatId
+    version = projectVersion
+
+//    from genJaxb.classesDir
+}
+
+springBoot {
+	mainClass = projectIntegMainClass
+}
+
+bootRun {
+	addResources = true
+
+	main = projectIntegMainClass
+}
+
+
+dependencies {
+    compile fileTree(include: '*.jar', dir: 'libs')
+	compile project (':'+projectConfigArtifcatId)
+	compile project (':'+projectInfraArtifcatId)
+
+
+//    compile 'org.simpleframework:simple-xml:2.7.1'
+
+    jaxb("org.glassfish.jaxb:jaxb-xjc:2.2.11")
+    compile 'org.springframework.ws:spring-ws-security:2.4.0.RELEASE'
+    compile group: 'org.asynchttpclient', name: 'async-http-client', version: '2.0.30'
+    // https://mvnrepository.com/artifact/org.json/json
+    compile group: 'org.json', name: 'json', version: '20160810'
+
+//    compile 'org.apache.cxf:cxf-rt-ws-security:3.1.9'
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile project(':psi-config').sourceSets.test.output
+    testCompile project(':psi-infra').sourceSets.test.output
+}
+
+
+// tag::wsdl[]
+task genJaxb {
+    ext.sourcesDir = "${buildDir}/generated-sources/jaxb"
+    ext.classesDir = "${buildDir}/classes/jaxb"
+    ext.schema = "http://www.webservicex.com/stockquote.asmx?WSDL"
+
+    outputs.dir classesDir
+
+    doLast() {
+        project.ant {
+            taskdef name: "xjc", classname: "com.sun.tools.xjc.XJCTask",
+                    classpath: configurations.jaxb.asPath
+            mkdir(dir: sourcesDir)
+            mkdir(dir: classesDir)
+
+            xjc(destdir: sourcesDir, schema: schema,
+                    package: "hello.wsdl") {
+                arg(value: "-wsdl")
+                produces(dir: sourcesDir, includes: "**/*.java")
+            }
+
+            javac(destdir: classesDir, source: 1.8, target: 1.8, debug: true,
+                    debugLevel: "lines,vars,source",
+                    classpath: configurations.jaxb.asPath) {
+                src(path: sourcesDir)
+                include(name: "**/*.java")
+                include(name: "*.java")
+            }
+
+            copy(todir: classesDir) {
+                fileset(dir: sourcesDir, erroronmissingdir: false) {
+                    exclude(name: "**/*.java")
+                }
+            }
+        }
+    }
+}
+// end::wsdl[]
+
+task afterEclipseImport {
+    dependsOn genJaxb
+}

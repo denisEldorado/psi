@@ -1,0 +1,39 @@
+<div xmlns:th="http://www.w3.org/1999/xhtml" class="login_wrapper" data-th-fragment="loginForm">
+    <div style="padding:20px; background-color:whitesmoke; border-radius:5px" class="animate form login_form">
+        <section class="login_content">
+            <form class="form-group" th:action="@{/portal/rhoDoLogin}">
+                <div>
+                    <h1><i class="fa fa-dollar"></i> BlueSky LTD <i class="fa fa-dollar"></i></h1>
+                    <p>The New Generation Of Mobile Banking Is Now</p>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="username" class="form-control" placeholder="Username" required=""/>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" class="form-control" placeholder="Password" required=""/>
+                </div>
+                <div class="form-group">
+                    <a class=" form-control btn btn-primary col" th:href="@{/dashboard}">Log in</a>
+                    <!--<a class="reset_pass" href="#">Lost your password?</a>-->
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="separator">
+
+                    <button style="width:80%" type="button" class="btn btn-default" data-toggle="modal"
+                            data-target="#myModal">Create Account
+                    </button>
+                    </p>
+
+                    <div class="clearfix"></div>
+                    <br/>
+
+
+                </div>
+            </form>
+        </section>
+    </div>
+
+
+</div>

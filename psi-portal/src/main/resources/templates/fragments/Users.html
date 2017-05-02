@@ -1,0 +1,78 @@
+<div xmlns:th="http://www.w3.org/1999/xhtml" class="right_col" role="main" data-th-fragment="Users">
+    <div class="">
+
+
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add
+                            New
+                        </button>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Settings 1</a>
+                                    </li>
+                                    <li><a href="#">Settings 2</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div id="" class="x_content">
+                        <table id="datatable-buttons" class="table table-striped jambo_table bulk_action">
+                            <thead>
+                            <tr class="headings">
+                                <th>
+                                    <input type="checkbox" id="check-all" class="flat">
+                                </th>
+                                <th class="column-title">First Name</th>
+                                <th class="column-title">Last Name</th>
+                                <th class="column-title">Email</th>
+                                <th class="column-title">Phone</th>
+                                <th class="column-title">Actions</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr class="even pointer" th:each="user: ${users}">
+                                <td class="a-center ">
+                                    <input type="checkbox" class="flat" name="table_records">
+                                </td>
+                                <td class=" " th:text="${user.firstName}">121000040</td>
+                                <td class=" " th:text="${user.lastName}">121000210</td>
+                                <td class=" " th:text="${user.email}">John Blank L</td>
+                                <td class=" " th:text="${user.phone}">$7.45</td>
+                                <center>
+                                    <td class=" ">
+                                        <a href="#" class="btn btn-primary btn-xs" data-toggle="modal"
+                                           data-target="#ViewModal"><i class="fa fa-folder"></i> View </a>
+                                        <a href="#" class="btn btn-info btn-xs" data-toggle="modal"
+                                           data-target="#EditModal"><i class="fa fa-pencil"></i> Edit </a>
+                                        <a href="#" class="btn btn-danger btn-xs" data-toggle="modal"
+                                           data-target="#DeleteModal"><i class="fa fa-trash-o"></i> Delete </a>
+                                    </td>
+                                </center>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->

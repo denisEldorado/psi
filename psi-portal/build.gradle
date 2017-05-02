@@ -1,0 +1,98 @@
+apply plugin: 'war'
+
+description = projectPortalArtifcatId
+
+war {
+    baseName = projectPortalArtifcatId
+    version = projectVersion
+
+}
+
+springBoot {
+    mainClass = projectPortalMainClass
+}
+
+task pathingJar(type: Jar) {
+    dependsOn configurations.runtime
+    appendix = 'pathing'
+
+    doFirst {
+        manifest {
+            attributes "Class-Path": configurations.runtime.files.collect {
+                it.toURL().toString().replaceFirst("file:/", '/')
+            }.join(" ")
+        }
+    }
+}
+
+
+bootRun {
+
+    dependsOn pathingJar
+    doFirst {
+        classpath = files("$buildDir/classes/main", "$buildDir/resources/main", pathingJar.archivePath)
+    }
+    addResources = false
+//    systemProperty 'spring.profiles.active', 'mysql'
+    main = projectPortalMainClass
+}
+
+
+dependencies {
+    compile project(':' + projectOrmArtifcatId)
+    compile project(':' + projectIntegArtifcatId)
+//    compile project(':psi-infra')
+    compile 'com.google.guava:guava:20.0'
+    providedRuntime 'javax.servlet:javax.servlet-api:3.1.0'
+
+
+    compile('org.springframework.boot:spring-boot-starter-cache')
+    compile 'org.thymeleaf:thymeleaf-spring5:3.0.5.M3'
+    compile 'org.thymeleaf.extras:thymeleaf-extras-springsecurity4'
+
+    compile 'org.springframework.boot:spring-boot-configuration-processor'
+    compile('org.springframework.boot:spring-boot-starter-integration')
+
+
+    compile('org.springframework.boot:spring-boot-starter-social-facebook')
+    compile('org.springframework.boot:spring-boot-starter-social-linkedin')
+    compile('org.springframework.boot:spring-boot-starter-social-twitter')
+    compile('org.springframework.social:spring-social-google:1.0.0.RELEASE')
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compile('org.springframework.boot:spring-boot-starter-web') {
+        exclude module: 'org.springframework.boot:spring-boot-starter-tomcat'
+    }
+
+    compile("org.springframework.boot:spring-boot-starter-undertow")
+
+    compile group: 'io.undertow', name: 'undertow-core', version: '1.4.11.Final'
+
+    compile group: 'org.asynchttpclient', name: 'async-http-client', version: '2.0.30'
+
+    compile group: 'net.javacrumbs.shedlock', name: 'shedlock-spring', version: '0.7.0'
+    compile group: 'net.javacrumbs.shedlock', name: 'shedlock-provider-jdbc', version: '0.7.0'
+// https://mvnrepository.com/artifact/net.sourceforge.nekohtml/nekohtml
+    compile group: 'net.sourceforge.nekohtml', name: 'nekohtml', version: '1.9.13'
+
+
+
+
+
+    compile('org.springframework.boot:spring-boot-starter-web-services') {
+        exclude module: 'org.springframework.boot:spring-boot-starter-web'
+    }
+    compile('com.fasterxml.jackson.dataformat:jackson-dataformat-csv')
+    compile('com.fasterxml.jackson.dataformat:jackson-dataformat-xml')
+
+//    compile 'com.thoughtworks.xstream:xstream:1.4.9'
+
+    runtime('com.h2database:h2')
+
+//    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    testCompile(group: 'org.springframework.boot', name: 'spring-boot-starter-test') {
+        exclude(module: 'commons-logging')
+    }
+
+    testCompile project(':' + projectOrmArtifcatId).sourceSets.test.output
+    testCompile project(':' + projectIntegArtifcatId).sourceSets.test.output
+}

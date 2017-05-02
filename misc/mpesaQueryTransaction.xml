@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<ns2:RequestSOAPHeader xmlns:ns2="http://www.huawei.com.cn/schema/common/v2_1">
+    <ns2:spId>107020</ns2:spId>
+    <ns2:spPassword>739c2600b1ac60550ceef548a7c39bf8a13d034722a4c9688e004ebf16773944</ns2:spPassword>
+    <ns2:serviceId>107020000</ns2:serviceId>
+    <ns2:timeStamp>20170214004529</ns2:timeStamp>
+</ns2:RequestSOAPHeader>
+<request xmlns="http://api-v1.gen.mm.vodafone.com/mminterface/request">
+<Transaction>
+    <CommandID>PromotionPayment</CommandID>
+    <LanguageCode/>
+    <OriginatorConversationID>eb56000d-f410-4846-b5ac-a633bfc88638-20170214004529040
+    </OriginatorConversationID>
+    <ConversationID/>
+    <Remark>Christmas Bonus</Remark>
+    <Parameters>
+        <Parameter>
+            <Key>Key1</Key>
+            <Value>Value1</Value>
+        </Parameter>
+        <Parameter>
+            <Key>Amount</Key>
+            <Value>1</Value>
+        </Parameter>
+    </Parameters>
+    <ReferenceData>
+        <ReferenceItem>
+            <Key>Occasion</Key>
+            <Value>Jamuhuri</Value>
+        </ReferenceItem>
+        <ReferenceItem>
+            <Key>QueueTimeoutURL</Key>
+            <Value>http://127.0.0.1:7021//mpesa/queue/notify</Value>
+        </ReferenceItem>
+    </ReferenceData>
+    <Timestamp>2017-02-14T00:45:29.00042+0300</Timestamp>
+</Transaction>
+<Identity>
+    <Caller>
+        <CallerType>0</CallerType>
+        <ThirdPartyID>BlueSky</ThirdPartyID>
+        <Password>BlueSky</Password>
+        <CheckSum>checksum0</CheckSum>
+        <ResultURL>http://IPaddress:port/mminterface/request</ResultURL>
+    </Caller>
+    <Initiator>
+        <IdentifierType>1</IdentifierType>
+        <Identifier>crystal</Identifier>
+        <SecurityCredential>D6MkFLPIn8df27Iu4V+WsA==</SecurityCredential>
+        <ShortCode>12345</ShortCode>
+    </Initiator>
+    <PrimaryParty>
+        <IdentifierType>1</IdentifierType>
+        <Identifier>015689</Identifier>
+        <ShortCode>015689</ShortCode>
+    </PrimaryParty>
+    <ReceiverParty>
+        <IdentifierType>4</IdentifierType>
+        <Identifier>12345</Identifier>
+        <ShortCode>12345</ShortCode>
+    </ReceiverParty>
+    <AccessDevice>
+        <IdentifierType>1</IdentifierType>
+        <Identifier>identifier1</Identifier>
+    </AccessDevice>
+</Identity>
+<KeyOwner>1</KeyOwner>
+</request>
+        <!--</SOAP-ENV:Body>-->
+        <!--</SOAP-ENV:Envelope>-->

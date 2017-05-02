@@ -1,0 +1,1419 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<WL5G3N0:definitions xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://www.obopay.com/xml/oews/v1"
+                     xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/"
+                     name="ObopayExternalWebServiceServiceDefinitions"
+                     targetNamespace="http://www.obopay.com/xml/oews/v1" xmlns="">
+  <WL5G3N0:types>
+      <xs:schema xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://www.obopay.com/xml/oews/v1"
+                 xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                 attributeFormDefault="unqualified" elementFormDefault="qualified"
+                 targetNamespace="java:com.obopay.core.transferobject">
+      <xs:complexType name="BaseTransferObject">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="GwalTraceId" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+      <xs:schema xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://www.obopay.com/xml/oews/v1"
+                 xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                 attributeFormDefault="unqualified" elementFormDefault="qualified"
+                 targetNamespace="java:com.obopay.ws.data">
+      <xs:import namespace="java:com.obopay.core.transferobject"/>
+      <xs:complexType name="ObopayWebServiceData">
+        <xs:complexContent>
+            <xs:extension xmlns:java="java:com.obopay.core.transferobject" base="java:BaseTransferObject">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="ApiIdType" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Tier1AgentId" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Tier1AgentName" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Tier2AgentId" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Tier3AgentId" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Tier1AgentPassword" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="CustomerPhoneNumber" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="NationalID" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="SenderFirstName" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="SenderLastName" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="TransactionType" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="InstrumentType" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="ProcessorCode" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="CashInAmount" nillable="true" type="xs:decimal"/>
+              <xs:element minOccurs="1" name="PaymentDetails1" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="PaymentDetails2" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="PaymentDetails3" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="PaymentDetails4" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="TxnAmount" nillable="true" type="xs:decimal"/>
+              <xs:element minOccurs="1" name="CurrencyType" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="NetTxnAmount" nillable="true" type="xs:decimal"/>
+              <xs:element minOccurs="1" name="FeeAmount" nillable="true" type="xs:decimal"/>
+              <xs:element minOccurs="1" name="TaxAmount" nillable="true" type="xs:decimal"/>
+              <xs:element minOccurs="1" name="Country" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="RequestId" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="TerminalID" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="TxnStatus" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="ErrorCode" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="OpsTransactionId" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="TransactionDate" nillable="true" type="xs:dateTime"/>
+              <xs:element minOccurs="1" name="Remark" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Reference1" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Reference2" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Reference3" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Reference4" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="Reference5" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CashOutResponse">
+        <xs:annotation>
+          <xs:documentation>CashOutResponse is the response to the request for Obopay business operation - &lt;i&gt;Customer Cash Out&lt;/i&gt;.
+ 
+ Example of a valid CashOutResponse Object 
+ &lt;br&gt;
+ &lt;pre&gt;
+ 		CashOutResponse response = getCashOutResponse();
+		String requestId = response.getRequestId();
+		String result = response.getResult();
+		String errorCode = response.getErrorCode();
+		String message = response.getMessage();
+		String transactionId = response.getTransactionId();
+		BigDecimal fees = response.getFees();
+		BigDecimal cashOutAmount = response.getCashOutAmount();
+ 		BigDecimal netCashOutAmount = response.getNetCashOutAmount();
+ &lt;/pre&gt;
+ If the operation is unsuccessful, there is no recovery mechanism to resume the operation. 
+ The entire operation should be repeated with the new &lt;i&gt;request id&lt;/i&gt;.
+ If the operation is unsuccessful, the cause is conveyed by &lt;i&gt;error code&lt;/i&gt; and &lt;i&gt;message&lt;/i&gt;:
+ 
+
+ &lt;style type="text/css"&gt;
+ table.tableizer-table {border: 1px solid #CCC; font-family: Arial, Helvetica, sans-serif; font-size: 12px;} .tableizer-table td {padding: 4px; margin: 3px; border: 1px solid #ccc;}
+ .tableizer-table th {background-color: #104E8B; color: #FFF; font-weight: bold;}
+ &lt;/style&gt;
+ &lt;table class="tableizer-table"&gt;
+ &lt;tr class="tableizer-firstrow"&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;Mandatory&lt;/th&gt;&lt;th&gt;DataType&lt;/th&gt;&lt;th&gt;Minimum Length&lt;/th&gt;&lt;th&gt;Maximum Length&lt;/th&gt;&lt;th&gt;Allowed Characters&lt;/th&gt;&lt;th&gt;Sample&lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;requestId&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;123,987&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;result&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;alphabtes&lt;/td&gt;&lt;td&gt;OK, KO&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;errorCode(if failure)&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;Numeric&lt;/td&gt;&lt;td&gt;200, 999 &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;message&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;success, failure&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;transactionId(if success)&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;numeric&lt;/td&gt;&lt;td&gt;123456&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;fees(if success)&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;BigDecimal&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Numbers and specialcharacters:{"."}&lt;/td&gt;&lt;td&gt;1000, 890.40&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;cashOutAmount(if success)&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;BigDecimal&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Numbers and specialcharacters:{"."}&lt;/td&gt;&lt;td&gt;1000, 890.40&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;netCashOutAmount(if success)&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;BigDecimal&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Numbers and specialcharacters:{"."}&lt;/td&gt;&lt;td&gt;1000, 890.40&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:java="java:com.obopay.ws.data" base="java:AbstractResponse">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="TransactionId" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the Obopay transaction id for successful Obopay business operation &lt;i&gt;Customer Cash Out&lt;/i&gt;.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="Fees" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:documentation>Gets the fees for successful Obopay business operation &lt;i&gt;Customer Cash Out&lt;/i&gt;.
+ 
+ Fee is calculated as defined in the System for Obopay business operation&lt;i&gt;Customer Cash Out&lt;/i&gt;.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="CashOutAmount" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:documentation>Gets the amount (inclusive of fees and taxes) withdrawn as part of successful Obopay business operation &lt;i&gt;Customer Cash Out&lt;/i&gt;.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="NetCashOutAmount" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:documentation>Gets the net amount (exclusive of fees and taxes) withdrawn as part of successful Obopay business operation &lt;i&gt;Customer Cash Out&lt;/i&gt;.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="CustomerDeviceNumber" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the customer device number.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="AbstractResponse">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="TransactionType" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="ResponseCode" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="ResponseMessage" nillable="true" type="xs:string"/>
+          <xs:element minOccurs="1" name="RequestId" nillable="true" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="AuthorizationRequest">
+        <xs:annotation>
+          <xs:documentation>AuthorizationRequest is used to authorize the request sent as part of Authorization process.
+ 
+ &lt;br&gt;
+ Example of a valid AuthorizationRequest Object
+ &lt;br&gt;
+ &lt;pre&gt;
+ 		AuthorizationRequest request = new AuthorizationRequest();
+		request.setRequestId("123");
+		request.setObopayMerchantId("DEL1");
+		request.setExternalMerchantId("BILL");
+		request.setCountry("SGBS");
+ 		request.setCustomerPhoneNumber("919876543210");
+ 		request.setTransactionType(ObopayWebServiceConstants.CUSTOMER_CASHIN); 
+ 		request.setAmount(new BigDecimal(1000));
+ 		request.setCurrency("952"));
+ 		request.setPin("1234");
+ 		request.setSecretCode("123456");
+ 		request.setRelatedTransactionId("123123");
+ 		request.setAdditionalField1("addi1");
+ 		request.setAdditionalField2("addi2");
+ 		request.setAdditionalField3("addi3");
+ 		request.setAdditionalField4("addi4");
+ 		request.setAdditionalField5("addi5");
+ 
+ &lt;/pre&gt;
+ 
+ 
+ &lt;br&gt;
+ 
+ The table below describes the field name in AuthorizationRequest object and operations available in Obopay Payment Platform.
+
+
+&lt;style type="text/css"&gt;
+table.tableizer-table {border: 1px solid #CCC; font-family: Arial, Helvetica, sans-serif; font-size: 12px;} .tableizer-table td {padding: 4px; margin: 3px; border: 1px solid #ccc;}
+.tableizer-table th {background-color: #104E8B; color: #FFF; font-weight: bold;}
+&lt;/style&gt;
+&lt;table class="tableizer-table"&gt;
+&lt;tr class="tableizer-firstrow"&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;cash in&lt;/th&gt;&lt;th&gt;cash out&lt;/th&gt;&lt;th&gt;viral cash out&lt;/th&gt;&lt;th&gt;merchant payment&lt;/th&gt;&lt;th&gt;enrollment&lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;requestId&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;externalAgentId&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;externalBranchId&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;country&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;customerPhoneNumber&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;transactionType&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;amount&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;currency&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;pin&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;secretCode&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;relatedTransactionId&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;externalMerchantId&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;M&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField1&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField2&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField3&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField4&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField5&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+ M- mandatory
+ O- Optional
+ &lt;br&gt;
+ &lt;br&gt;
+ The below table describes the fields in AuthorizationRequest object and its properties:
+
+
+ &lt;style type="text/css"&gt;
+ table.tableizer-table {border: 1px solid #CCC; font-family: Arial, Helvetica, sans-serif; font-size: 12px;} .tableizer-table td {padding: 4px; margin: 3px; border: 1px solid #ccc;}
+ .tableizer-table th {background-color: #104E8B; color: #FFF; font-weight: bold;}
+ &lt;/style&gt;
+ &lt;table class="tableizer-table"&gt;
+ &lt;tr class="tableizer-firstrow"&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;DataType&lt;/th&gt;&lt;th&gt;Minimum Length&lt;/th&gt;&lt;th&gt;Maximum Length&lt;/th&gt;&lt;th&gt;Allowed Characters&lt;/th&gt;&lt;th&gt;Sample&lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;requestId&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;123,987&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;externalAgentId&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;111,234,234&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;externalBranchId&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;111,234,234&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;country&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;12&lt;/td&gt;&lt;td&gt;alphabets&lt;/td&gt;&lt;td&gt;SGBC,SGCB&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;customerPhoneNumber&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;9999955555&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;transactionType&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;predefined constants&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;amount&lt;/td&gt;&lt;td&gt;BigDecimal&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Numbers and specialcharacters:{"."}&lt;/td&gt;&lt;td&gt;1000, 890.40&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;currency&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;840,147&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;pin&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;6&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;1111, 3222&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;secretCode&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;6&lt;/td&gt;&lt;td&gt;6&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;564654&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;relatedTransactionId&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;8&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;5465, 465444&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;externalMerchantId&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;DEL1,CANL&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField1&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;add 1&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField2&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;add 2&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField3&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;add 3&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField4&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;add 4&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField5&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;add 5&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:java="java:com.obopay.ws.data" base="java:VerificationRequest">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="AgentOAN" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets Agent OAN number.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="CustomerPhoneNumber" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the customer phone number (International format, starting with country code – 
+ ex. 336xxx for a French mobile phone).</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="Amount" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:documentation>Gets the amount for a successful Obopay business operation, the amount in the operation request that follows, 
+ should match this amount (in &lt;i&gt;Authorization&lt;/i&gt;).
+ 
+ For 1€ and 50 cents, the amount is 150. For 2500 FCF francs, the amount is 2500.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="Currency" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the transaction currency code following the ISO 4217 norm (numeric code): 
+ For example, «978» for the euro, «840» for the US dollar, «952» for the CFA franc.
+ The application supports only one currency which will be shared while on-boarding a partner.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="Pin" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the PIN encrypted in AES by partner platform, used by the customer for certain Obopay business operations.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="SecretCode" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the secret code.
+ 
+ When a registered customer in Obopay initiates money transfer to a customer 
+ not registered in the system, a code is generated and sent to the registered customer. The non-registered customer
+ uses this code (shared by the registered customer), along with the &lt;i&gt;Related Transaction Id&lt;/i&gt; to withdraw money from an agent.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="RelatedTransactionId" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the related transaction id.
+ 
+ When a registered customer in Obopay initiates money transfer to a customer not registered in the system, 
+ an id is generated and sent to the non-registered customer. The non-registered customer
+ uses this id to withdraw money from an agent.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="ObopayMerchantId" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets Obopay merchant id, can be same for all merchants for a specific Partner id, provided by Obopay. 
+ It contains biller short name registered in Obopay platform.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="ExternalMerchantId" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets external merchant id, can be same for all merchants for a specific Partner id, provided by Partner.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="CustomerType" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the Type of customer.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="TerminalId" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the Terminal Id</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="PreferredLanguage" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="FirstName" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="IdType" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="CustomerId" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="LastName" nillable="true" type="xs:string"/>
+              <xs:element minOccurs="1" name="SenderDeviceNumber" nillable="true" type="xs:string"/>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="VerificationRequest">
+        <xs:annotation>
+          <xs:documentation>Abstracts Obopay Payment Service client request for verification the request.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:java="java:com.obopay.ws.data" base="java:AbstractRequest"/>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="AbstractRequest">
+        <xs:annotation>
+          <xs:documentation>Abstracts Obopay Payment Service client request</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="1" name="RequestId" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Gets the request id generated by the Partner for Reconciliation and Tracking purposes; 
+ the id is unique among partner web service requests.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="Country" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Gets the country of the Obopay Payment Services exposed as web services.
+ This value will be created while on-boarding a partner and shared with the partner.
+ ex : SGBS for Senegal ,SGBC for Cameron</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="ExternalAgentId" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Gets the external agent id (can be Merchant id) who is requesting the Obopay Payment Service, 
+ created in partner Platform.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="ExternalBranchId" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Gets the external branch id of the agent who is requesting created in partner Platform.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="TransactionType" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Gets the transaction type based on the Obopay business operation available in the system.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="AdditionalField1" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Gets the additional field1 used for future purpose.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="AdditionalField2" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Gets the additional field2 used for future purpose.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="AdditionalField3" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Gets the additional field3 used for future purpose.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="AdditionalField4" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Gets the additional field4 used for future purpose.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="AdditionalField5" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Gets the additional field5 used for future purpose.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="RegistrationResponse">
+        <xs:annotation>
+          <xs:documentation>RegistrationResponse is the response to the request for Obopay business operation - customer registration.
+ &lt;br&gt;
+ Example of a valid RegistrationResponse Object 
+ &lt;br&gt;
+ &lt;pre&gt;
+ 		RegistrationResponse response = getRegistrationResponse();
+		String requestId = response.getRequestId();
+		String result = response.getResult();
+		String errorCode = response.getErrorCode();
+		String message = response.getMessage();
+ &lt;/pre&gt;
+ If the operation is unsuccessful, there is no recovery mechanism to resume the operation. 
+ The entire operation should be repeated with the new &lt;i&gt;request id&lt;/i&gt;.
+ If the operation is unsuccessful, the cause is conveyed by &lt;i&gt;error code&lt;/i&gt; and &lt;i&gt;message&lt;/i&gt;:
+
+ &lt;style type="text/css"&gt;
+ table.tableizer-table {border: 1px solid #CCC; font-family: Arial, Helvetica, sans-serif; font-size: 12px;} .tableizer-table td {padding: 4px; margin: 3px; border: 1px solid #ccc;}
+ .tableizer-table th {background-color: #104E8B; color: #FFF; font-weight: bold;}
+ &lt;/style&gt;
+ &lt;table class="tableizer-table"&gt;
+ &lt;tr class="tableizer-firstrow"&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;Mandatory&lt;/th&gt;&lt;th&gt;DataType&lt;/th&gt;&lt;th&gt;Minimum Length&lt;/th&gt;&lt;th&gt;Maximum Length&lt;/th&gt;&lt;th&gt;Allowed Characters&lt;/th&gt;&lt;th&gt;Sample&lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;requestId&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;123,987&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;result&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;alphabtes&lt;/td&gt;&lt;td&gt;OK, KO&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;errorCode(if failure)&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;Numeric&lt;/td&gt;&lt;td&gt;200, 999 &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;message&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;success, failure&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:java="java:com.obopay.ws.data" base="java:AbstractResponse"/>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CashOutRequest">
+        <xs:annotation>
+          <xs:documentation>CashOutRequest is the request to be used to invoke the Obopay business operation - &lt;i&gt;Customer Cash Out&lt;/i&gt;.
+ 
+ The request for the Obopay business operation should be preceded by request to &lt;i&gt;authorize&lt;/i&gt; method.
+ The request is not successful if the &lt;i&gt;Request Id&lt;/i&gt; does not match the one in the corresponding &lt;i&gt;Authorization&lt;/i&gt; Request.
+ 
+ An object of this class contains all necessary information to withdraw funds from the customer prepaid account.
+ 
+ &lt;br&gt;
+ &lt;br&gt;
+ Example of a valid CashOutRequest Object
+ &lt;br&gt;
+ &lt;pre&gt;
+ 		CashOutRequest request = new CashOutRequest();
+		request.setRequestId("123");
+		request.setCountry("SGBS");
+		request.setExternalAgentId("453");
+		request.setExternalBranchId("1233");
+ 		request.setCustomerPhoneNumber("919876543210");
+ 		request.setTransactionType(ObopayWebServiceConstants.CUSTOMER_CASHOUT);
+ 		request.setAmount(new BigDecimal(1000));
+ 		request.setCurrency("952");
+ 		request.setPin("1234");
+ 		request.setAdditionalField1("addi1");
+ 		request.setAdditionalField2("addi2");
+ 		request.setAdditionalField3("addi3");
+ 		request.setAdditionalField4("addi4");
+ 		request.setAdditionalField5("addi5");
+ &lt;/pre&gt;
+ The below table describes the fields in CashOutRequest object and its properties:
+ &lt;br&gt;
+
+&lt;style type="text/css"&gt;
+table.tableizer-table {border: 1px solid #CCC; font-family: Arial, Helvetica, sans-serif; font-size: 12px;} .tableizer-table td {padding: 4px; margin: 3px; border: 1px solid #ccc;}
+.tableizer-table th {background-color: #104E8B; color: #FFF; font-weight: bold;}
+&lt;/style&gt;
+&lt;table class="tableizer-table"&gt;
+&lt;tr class="tableizer-firstrow"&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;Mandatory&lt;/th&gt;&lt;th&gt;DataType&lt;/th&gt;&lt;th&gt;Minimum Length&lt;/th&gt;&lt;th&gt;Maximum Length&lt;/th&gt;&lt;th&gt;Allowed Characters&lt;/th&gt;&lt;th&gt;Sample&lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;requestId&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;123,987&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;externalAgentId&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;111,234,234&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;externalBranchId&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;111,234,234&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;country&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;12&lt;/td&gt;&lt;td&gt;alphabets&lt;/td&gt;&lt;td&gt;SGBC,SGCB&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;customerPhoneNumber&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;Long&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;9999955555&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;transactionType&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;predefined constants&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;amount&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;BigDecimal&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Numbers and specialcharacters:{"."}&lt;/td&gt;&lt;td&gt;1000, 890.40&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;currency&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;840,147&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;pin&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;6&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;1111, 3222&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField1&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;add 1&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField2&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;add 2&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField3&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;add 3&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField4&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;add 4&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField5&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;add 5&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:java="java:com.obopay.ws.data" base="java:FinancialTransactionRequest">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="Pin" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the PIN encrypted in AES by partner platform, used by the customer for certain Obopay business operations.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="AgentOAN" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets Agent OAN number.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="TerminalId" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the Terminal Id.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="FinancialTransactionRequest">
+        <xs:annotation>
+          <xs:documentation>Abstracts Obopay Payment Service client request for a financial transaction</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:java="java:com.obopay.ws.data" base="java:AbstractRequest">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="CustomerPhoneNumber" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the customer phone number (International format, starting with country code – 
+ ex. 336xxx for a French mobile phone).</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="Amount" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:documentation>Gets the amount for a successful Obopay business operation.
+ For 1€ and 50 cents, the amount is 150. For 2500 FCF francs, the amount is 2500.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="Currency" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the transaction currency code following the ISO 4217 norm (numeric code): 
+ For example, «978» for the euro, «840» for the US dollar, «952» for the CFA franc.
+ The application supports only one currency which will be shared while on-boarding a partner.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ViralCashOutResponse">
+        <xs:annotation>
+          <xs:documentation>ViralCashOutResponse is the response to the request for Obopay business operation - &lt;i&gt;Customer Viral Cash Out&lt;/i&gt;.
+ 
+ Example of a valid ViralCashOutResponse Object 
+ &lt;br&gt;
+ &lt;pre&gt;
+ 		ViralCashOutResponse response = getViralCashOutResponse();
+		String requestId = response.getRequestId();
+		String result = response.getResult();
+		String errorCode = response.getErrorCode();
+		String message = response.getMessage();
+		String transactionId = response.getTransactionId();
+		BigDecimal fees = response.getFees();
+		BigDecimal amountHanded = response.getAmountHanded();
+ 		BigDecimal netCashOutAmount = response.getNetCashOutAmount();
+ &lt;/pre&gt;
+ 
+ If the operation is unsuccessful, there is no recovery mechanism to resume the operation. 
+ The entire operation should be repeated with the new &lt;i&gt;request id&lt;/i&gt;.
+ If the operation is unsuccessful, the cause is conveyed by &lt;i&gt;error code&lt;/i&gt; and &lt;i&gt;message&lt;/i&gt;:
+
+&lt;style type="text/css"&gt;
+table.tableizer-table {border: 1px solid #CCC; font-family: Arial, Helvetica, sans-serif; font-size: 12px;} .tableizer-table td {padding: 4px; margin: 3px; border: 1px solid #ccc;}
+.tableizer-table th {background-color: #104E8B; color: #FFF; font-weight: bold;}
+&lt;/style&gt;
+&lt;table class="tableizer-table"&gt;
+&lt;tr class="tableizer-firstrow"&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;Mandatory&lt;/th&gt;&lt;th&gt;DataType&lt;/th&gt;&lt;th&gt;Minimum Length&lt;/th&gt;&lt;th&gt;Maximum Length&lt;/th&gt;&lt;th&gt;Allowed Characters&lt;/th&gt;&lt;th&gt;Sample&lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;requestId&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;123,987&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;result&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;alphabtes&lt;/td&gt;&lt;td&gt;OK, KO&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;errorCode(if failure)&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;Numeric&lt;/td&gt;&lt;td&gt;200, 999 &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;message&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;success, failure&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;transactionId(if success)&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;numeric&lt;/td&gt;&lt;td&gt;123456&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;fees(if success)&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;BigDecimal&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Numbers and specialcharacters:{"."}&lt;/td&gt;&lt;td&gt;1000, 890.40&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;amountHanded(if success)&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;BigDecimal&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Numbers and specialcharacters:{"."}&lt;/td&gt;&lt;td&gt;1000, 890.40&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;netCashOutAmount(if success)&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;BigDecimal&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Numbers and specialcharacters:{"."}&lt;/td&gt;&lt;td&gt;1000, 890.40&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:java="java:com.obopay.ws.data" base="java:AbstractResponse">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="TransactionId" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the Obopay transaction id for successful Obopay business operation &lt;i&gt;Viral Customer Cash Out&lt;/i&gt;.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="Fees" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:documentation>Gets the fees for successful Obopay business operation &lt;i&gt;Customer Cash Out&lt;/i&gt;.
+ 
+ Fee is calculated as defined in the System for Obopay business operation&lt;i&gt;Viral Customer Cash Out&lt;/i&gt;.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="AmountHanded" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:documentation>Gets the amount (inclusive of fees and taxes) handed as part of successful Obopay business operation &lt;i&gt;Customer Cash Out&lt;/i&gt;.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="NetCashOutAmount" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:documentation>Gets the net amount (exclusive of fees and taxes) withdrawn as part of successful Obopay business operation &lt;i&gt;Viral Customer Cash Out&lt;/i&gt;.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="CustomerDeviceNumber" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the customer device number.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="AddressDetails">
+        <xs:annotation>
+          <xs:documentation>AddressDetails records customer address information as part of Obopay business operation &lt;i&gt;Customer Registration&lt;/i&gt;.
+ 
+ &lt;br&gt;
+ Example of a valid AddressDetails Object
+ &lt;br&gt;
+ &lt;pre&gt;
+ 		AddressDetails addressDetails = new AddressDetails();
+		addressDetails.setAddress("#11");
+		addressDetails.setSite("Axis Building");
+ 		addressDetails.setOffice("MG Road");
+ 		addressDetails.setPostalCode("123456");
+ 		addressDetails.setCity("BANGALORE");
+ &lt;/pre&gt;
+ The below table describes the fields in AddressDetails object and its properties
+ &lt;br&gt;
+
+ &lt;style type="text/css"&gt;
+ table.tableizer-table {border: 1px solid #CCC; font-family: Arial, Helvetica, sans-serif; font-size: 12px;} .tableizer-table td {padding: 4px; margin: 3px; border: 1px solid #ccc;}
+ .tableizer-table th {background-color: #104E8B; color: #FFF; font-weight: bold;}
+ &lt;/style&gt;
+ &lt;table class="tableizer-table"&gt;
+ &lt;tr class="tableizer-firstrow"&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;Mandatory&lt;/th&gt;&lt;th&gt;DataType&lt;/th&gt;&lt;th&gt;Minimum Length&lt;/th&gt;&lt;th&gt;Maximum Length&lt;/th&gt;&lt;th&gt;Allowed Characters&lt;/th&gt;&lt;th&gt;Sample&lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;address&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;64&lt;/td&gt;&lt;td&gt;alphabets, numeric and special  characters:{" ","#","_","-",",",".","/"}&lt;/td&gt;&lt;td&gt;#42 Door, 4-112&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;site&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;64&lt;/td&gt;&lt;td&gt;alphabets, numeric and special  characters:{" ","#","_","-",",",".","/"}&lt;/td&gt;&lt;td&gt;#42 Door, 4-112&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;office&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;64&lt;/td&gt;&lt;td&gt;alphabets, numeric and special  characters:{" ","#","_","-",",",".","/"}&lt;/td&gt;&lt;td&gt;#42 Door, 4-112&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;postalCode&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;64&lt;/td&gt;&lt;td&gt;alphabets,numeric and special  characters:{" ","@","#","$","_","-",",",".","/"}&lt;/td&gt;&lt;td&gt;#42$, @Yes123&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;city&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;64&lt;/td&gt;&lt;td&gt;alphabets,and special  characters:{" "}&lt;/td&gt;&lt;td&gt;new jersy&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="1" name="Address" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Gets the address of the customer.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="Site" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Gets the site.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="Office" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Gets the office.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="PostalCode" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Gets the postal code.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="City" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Gets the city.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="WhiteList">
+        <xs:annotation>
+          <xs:documentation>WhiteList records mobile numbers of customers (registered/non-registered) to whom funds can be transferred by the customer 
+ without entering customer &lt;i&gt;PIN&lt;/i&gt;. &lt;i&gt;Whitelisting&lt;/i&gt; is done as part of Obopay business operation &lt;i&gt;Customer Registration&lt;/i&gt;.
+ 
+ &lt;br&gt;
+ Example of a valid WhiteList Object
+ &lt;br&gt;
+ &lt;pre&gt;
+ 		WhiteList whiteList = new WhiteList();
+		whiteList.setWhiteListedNumber1(new String(919876543210));
+		whiteList.setWhiteListedNumber2(new String(919876543211));
+		whiteList.setWhiteListedNumber3(new String(919876543212));
+		whiteList.setWhiteListedNumber4(new String(919876543213));
+		whiteList.setWhiteListedNumber5(new String(919876543214));
+		whiteList.setWhiteListedNumber6(new String(919876543215));
+		whiteList.setWhiteListedNumber7(new String(919876543216));
+		whiteList.setWhiteListedNumber8(new String(919876543217));
+		whiteList.setWhiteListedNumber9(new String(919876543218));
+		whiteList.setWhiteListedNumber10(new String(919876543219));
+ &lt;/pre&gt;
+ The below table describes the fields in WhiteList object and its properties
+ &lt;br&gt;
+ &lt;style type="text/css"&gt;
+ table.tableizer-table {border: 1px solid #CCC; font-family: Arial, Helvetica, sans-serif; font-size: 12px;} .tableizer-table td {padding: 4px; margin: 3px; border: 1px solid #ccc;}
+ .tableizer-table th {background-color: #104E8B; color: #FFF; font-weight: bold;}
+ &lt;/style&gt;
+ &lt;table class="tableizer-table"&gt;
+ &lt;tr class="tableizer-firstrow"&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;Mandatory&lt;/th&gt;&lt;th&gt;DataType&lt;/th&gt;&lt;th&gt;Minimum Length&lt;/th&gt;&lt;th&gt;Maximum Length&lt;/th&gt;&lt;th&gt;Allowed Characters&lt;/th&gt;&lt;th&gt;Sample&lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;whiteListedNumber1&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;9999955555&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;whiteListedNumber2&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;9999955555&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;whiteListedNumber3&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;9999955555&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;whiteListedNumber4&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;9999955555&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;whiteListedNumber5&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;9999955555&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;whiteListedNumber6&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;9999955555&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;whiteListedNumber7&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;9999955555&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;whiteListedNumber8&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;9999955555&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;whiteListedNumber9&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;9999955555&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;whiteListedNumber10&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;9999955555&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="1" name="WhiteListedNumber1" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Gets the white listed number1.
+ 
+ The User telephone number (International format, starting with country code – 
+ ex. 336xxx for a French mobile phone).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="WhiteListedNumber2" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Gets the white listed number2.
+ 
+ The User telephone number (International format, starting with country code – 
+ ex. 336xxx for a French mobile phone).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="WhiteListedNumber3" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Gets the white listed number3.
+ 
+ The User telephone number (International format, starting with country code – 
+ ex. 336xxx for a French mobile phone).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="WhiteListedNumber4" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Gets the white listed number4.
+ 
+ The User telephone number (International format, starting with country code – 
+ ex. 336xxx for a French mobile phone).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="WhiteListedNumber5" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Gets the white listed number5.
+ 
+ The User telephone number (International format, starting with country code – 
+ ex. 336xxx for a French mobile phone).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="WhiteListedNumber6" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Gets the white listed number6.
+ 
+ The User telephone number (International format, starting with country code – 
+ ex. 336xxx for a French mobile phone).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="WhiteListedNumber7" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Gets the white listed number7.
+ 
+ The User telephone number (International format, starting with country code – 
+ ex. 336xxx for a French mobile phone).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="WhiteListedNumber8" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Gets the white listed number8.
+ 
+ The User telephone number (International format, starting with country code – 
+ ex. 336xxx for a French mobile phone).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="WhiteListedNumber9" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Gets the white listed number9.
+ 
+ The User telephone number (International format, starting with country code – 
+ ex. 336xxx for a French mobile phone).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="1" name="WhiteListedNumber10" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:documentation>Gets the white listed number10.
+ 
+ The User telephone number (International format, starting with country code – 
+ ex. 336xxx for a French mobile phone).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ViralCashOutRequest">
+        <xs:annotation>
+          <xs:documentation>ViralCashOutRequest is the request to be used to invoke the Obopay business operation - &lt;i&gt;Customer Viral Cash Out&lt;/i&gt;.
+ 
+ The request for the Obopay business operation should be preceded by request to &lt;i&gt;authorize&lt;/i&gt; method.
+ The request is not successful if the &lt;i&gt;Request Id&lt;/i&gt; does not match the one in the corresponding &lt;i&gt;Authorization&lt;/i&gt; Request.
+ 
+ An object of this class contains all necessary information to withdraw funds from customer prepaid account by a customer who is not registered in the system.
+ 
+ &lt;br&gt;
+ Example of a valid ViralCashOutRequest Object
+ &lt;br&gt;
+ &lt;pre&gt;
+ 		ViralCashOutRequest request = new ViralCashOutRequest();
+		request.setRequestId("123");
+		request.setCountry("SGBS");
+		request.setExternalAgentId("453");
+		request.setExternalBranchId("1233");
+ 		request.setCustomerPhoneNumber("919876543210");
+ 		request.setTransactionType(ObopayWebServiceConstants.CUSTOMER_VIRAL_CASHOUT);
+ 		request.setAmount(new BigDecimal(1000));
+ 		request.setCurrency("952");
+ 		request.setSecretCode("123456");
+		request.setRelatedTransactionId("123123");
+		request.setFirstName("first");
+		request.setLastName("last");
+		request.setNationalId("AX12334234");
+
+ 		request.setAdditionalField1("addi1");
+ 		request.setAdditionalField2("addi2");
+ 		request.setAdditionalField3("addi3");
+ 		request.setAdditionalField4("addi4");
+ 		request.setAdditionalField5("addi5");
+
+ &lt;/pre&gt;
+ The below table describes the fields in ViralCashOutRequest object and its properties:
+ &lt;br&gt;
+
+ &lt;style type="text/css"&gt;
+ table.tableizer-table {border: 1px solid #CCC; font-family: Arial, Helvetica, sans-serif; font-size: 12px;} .tableizer-table td {padding: 4px; margin: 3px; border: 1px solid #ccc;}
+ .tableizer-table th {background-color: #104E8B; color: #FFF; font-weight: bold;}
+ &lt;/style&gt;
+ &lt;table class="tableizer-table"&gt;
+
+ &lt;tr class="tableizer-firstrow"&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;Mandatory&lt;/th&gt;&lt;th&gt;DataType&lt;/th&gt;&lt;th&gt;Minimum Length&lt;/th&gt;&lt;th&gt;Maximum Length&lt;/th&gt;&lt;th&gt;Allowed Characters&lt;/th&gt;&lt;th&gt;Sample&lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;requestId&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;123,987&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;externalAgentId&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;111,234,234&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;externalBranchId&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;111,234,234&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;country&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;12&lt;/td&gt;&lt;td&gt;alphabets&lt;/td&gt;&lt;td&gt;SGBC,SGCB&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;customerPhoneNumber&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;9999955555&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;transactionType&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;predefined constants&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;amount&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;BigDecimal&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Numbers and specialcharacters:{"."}&lt;/td&gt;&lt;td&gt;1000, 890.40&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;currency&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;840,147&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;pin&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;6&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;1111, 3222&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;secretCode&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;6&lt;/td&gt;&lt;td&gt;6&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;564654&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;relatedTransactionId&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;8&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;5465, 465444&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;fullname&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;alphabets, numeric and special  characters:{" "}&lt;/td&gt;&lt;td&gt;paul1, john&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;lastName&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;alphabets, numeric and special  characters:{" "}&lt;/td&gt;&lt;td&gt;paul1, john&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;nationalId&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;14&lt;/td&gt;&lt;td&gt;alphabets, numeric and specialcharacters:{" ","@","#","$","_","-",",",".","/"}&lt;/td&gt;&lt;td&gt;hdndn123@#$, hk jkd_&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField1&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;add 1&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField2&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;add 2&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField3&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;add 3&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField4&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;add 4&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField5&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;add 5&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:java="java:com.obopay.ws.data" base="java:FinancialTransactionRequest">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="SecretCode" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the secret code.
+ 
+ When a registered customer in Obopay initiates money transfer to a customer 
+ not registered in the system, a code is generated and sent to the registered customer. The non-registered customer
+ uses this code (shared by the registered customer), along with the &lt;i&gt;Related Transaction Id&lt;/i&gt; to withdraw money from an agent.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="RelatedTransactionId" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the related transaction id.
+ 
+ When a registered customer in Obopay initiates money transfer to a customer not registered in the system, 
+ an id is generated and sent to the non-registered customer. The non-registered customer
+ uses this id to withdraw money from an agent.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="FirstName" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the first name of the Viral receiver.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="LastName" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the last name of the Viral receiver.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="NationalId" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the National id or any valid Unique id for the Viral receiver.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="TerminalId" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the Terminal Id</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="SenderDeviceNumber" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Sets the sender device number</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CashInResponse">
+        <xs:annotation>
+          <xs:documentation>CashInResponse is the response to the request for Obopay business operation - &lt;i&gt;Customer Cash In&lt;/i&gt;.
+ &lt;br&gt;
+ Example of a valid CashInResponse Object 
+ &lt;br&gt;
+ &lt;pre&gt;
+ 		CashInResponse response = getCashInResponse();
+		String requestId = response.getRequestId();
+		String result = response.getResult();
+		String errorCode = response.getErrorCode();
+		String message = response.getMessage();
+		String transactionId = response.getTransactionId();
+		BigDecimal fees = response.getFees();
+		BigDecimal taxes = response.getTaxes();
+		BigDecimal cashInAmount = response.getCashInAmount();
+ 		BigDecimal netCashInAmount = response.getNetCashInAmount();
+ &lt;/pre&gt;
+ If the operation is unsuccessful, there is no recovery mechanism to resume the operation. 
+ The entire operation should be repeated with the new &lt;i&gt;request id&lt;/i&gt;. 
+ If the operation is unsuccessful, the cause is conveyed by &lt;i&gt;error code&lt;/i&gt; and &lt;i&gt;message&lt;/i&gt;:
+
+&lt;style type="text/css"&gt;
+table.tableizer-table {border: 1px solid #CCC; font-family: Arial, Helvetica, sans-serif; font-size: 12px;} .tableizer-table td {padding: 4px; margin: 3px; border: 1px solid #ccc;}
+.tableizer-table th {background-color: #104E8B; color: #FFF; font-weight: bold;}
+&lt;/style&gt;
+&lt;table class="tableizer-table"&gt;
+&lt;tr class="tableizer-firstrow"&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;Mandatory&lt;/th&gt;&lt;th&gt;DataType&lt;/th&gt;&lt;th&gt;Minimum Length&lt;/th&gt;&lt;th&gt;Maximum Length&lt;/th&gt;&lt;th&gt;Allowed Characters&lt;/th&gt;&lt;th&gt;Sample&lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;requestId&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;123,987&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;result&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;alphabtes&lt;/td&gt;&lt;td&gt;OK, KO&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;errorCode(if failure)&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;Numeric&lt;/td&gt;&lt;td&gt;200, 999 &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;message&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;success, failure&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;transactionId(if success)&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;numeric&lt;/td&gt;&lt;td&gt;123456&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;fees(if success)&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;BigDecimal&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Numbers and specialcharacters:{"."}&lt;/td&gt;&lt;td&gt;1000, 890.40&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;cashInAmount(if success)&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;BigDecimal&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Numbers and specialcharacters:{"."}&lt;/td&gt;&lt;td&gt;1000, 890.40&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;netCashInAmount(if success)&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;BigDecimal&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Numbers and specialcharacters:{"."}&lt;/td&gt;&lt;td&gt;1000, 890.40&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:java="java:com.obopay.ws.data" base="java:AbstractResponse">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="TransactionId" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the Obopay transaction id for successful Obopay business operation &lt;i&gt;Customer Cash In&lt;/i&gt;.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="Fees" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:documentation>Gets the fees for successful Obopay business operation &lt;i&gt;Customer Cash In&lt;/i&gt;.
+ 
+ Fee is calculated as defined in the System for Obopay business operation&lt;i&gt;Customer Cash In&lt;/i&gt;.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="Taxes" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:documentation>Gets the taxes for successful Obopay business operation &lt;i&gt;Customer Cash In&lt;/i&gt;.
+ 
+ Tax is calculated as defined in the System for the Obopay business operation&lt;i&gt;Customer Cash In&lt;/i&gt;.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="CashInAmount" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:documentation>Gets the amount (inclusive of fees and taxes) deposited as part of successful Obopay business operation &lt;i&gt;Customer Cash In&lt;/i&gt;.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="NetCashInAmount" nillable="true" type="xs:decimal">
+                <xs:annotation>
+                  <xs:documentation>Gets the net amount (exclusive of fees and taxes) deposited as part of successful Obopay business operation &lt;i&gt;Customer Cash In&lt;/i&gt;.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="CustomerDeviceNumber" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the customer device number.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="AuthorizationResponse">
+        <xs:annotation>
+          <xs:documentation>AuthorizationResponse is the response to the request for - &lt;i&gt;Authorization&lt;/i&gt;.
+ &lt;br&gt;
+ Example of a valid AuthorizationResponse Object 
+ &lt;br&gt;
+ &lt;pre&gt;
+ 		AuthorizationResponse response = getResponse();
+		String requestId = response.getRequestId();
+		String result = response.getResult();
+		String errorCode = response.getErrorCode();
+		String message = response.getMessage();
+ &lt;/pre&gt;
+ Once the operation is successful use the &lt;i&gt;request id&lt;/i&gt; provided in &lt;i&gt;AuthorizationRequest&lt;/i&gt; for Obopay business API invocation.
+ If the operation is unsuccessful, we can't use the same &lt;i&gt;request id&lt;/i&gt; for operations available in Obopay.
+ If the operation is unsuccessful, the cause is conveyed by &lt;i&gt;error code&lt;/i&gt; and &lt;i&gt;message&lt;/i&gt;:
+
+ &lt;style type="text/css"&gt;
+ table.tableizer-table {border: 1px solid #CCC; font-family: Arial, Helvetica, sans-serif; font-size: 12px;} .tableizer-table td {padding: 4px; margin: 3px; border: 1px solid #ccc;}
+ .tableizer-table th {background-color: #104E8B; color: #FFF; font-weight: bold;}
+ &lt;/style&gt;
+ &lt;table class="tableizer-table"&gt;
+ &lt;tr class="tableizer-firstrow"&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;Mandatory&lt;/th&gt;&lt;th&gt;DataType&lt;/th&gt;&lt;th&gt;Minimum Length&lt;/th&gt;&lt;th&gt;Maximum Length&lt;/th&gt;&lt;th&gt;Allowed Characters&lt;/th&gt;&lt;th&gt;Sample&lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;requestId&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;123,987&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;result&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;alphabtes&lt;/td&gt;&lt;td&gt;OK, KO&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;errorCode(if failure)&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;Numeric&lt;/td&gt;&lt;td&gt;200, 999 &lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;message&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;success, failure&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:java="java:com.obopay.ws.data" base="java:AbstractResponse"/>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="RegistrationRequest">
+        <xs:annotation>
+          <xs:documentation>RegistrationRequest is the request to be used to invoke the Obopay business operation - &lt;i&gt;Customer Registration&lt;/I&gt;.
+ 
+ The request for the Obopay business operation should be preceded by request to &lt;i&gt;authorize&lt;/i&gt; method.
+ The request is not successful if the &lt;i&gt;Request Id&lt;/i&gt; does not match the one in the corresponding &lt;i&gt;Authorization&lt;/i&gt; Request.
+ 
+ An object of this class contains all necessary information to register a customer in Obopay Payment Platform.
+ 
+ Once the user is registered it should be validated and approved by its supervisor which can automated if the customer
+ approval mode is automatic or else it will follow the standard way of approval available in Obopay Payment Platform.
+ 
+ &lt;br&gt;
+ Example of a valid RegistrationRequest Object
+ &lt;br&gt;
+ &lt;pre&gt;
+ 		RegistrationRequest request = new RegistrationRequest();
+		request.setRequestId("123");
+		request.setCountry("SGBS");
+		request.setExternalAgentId("453");
+		request.setExternalBranchId("1233");
+ 		request.setCustAccountApprovalMode(ObopayWebServiceConstants.CUSTOMER_AUTOMATIC_APPROVAL_MODE);
+ 		request.setCustomerPhoneNumber("919876543210");
+ 		request.setTransactionType(ObopayWebServiceConstants.CUSTOMER_ENROLLMENT);
+ 
+ 		request.setFirstName("John");
+ 		request.setLastName("Sanjeev");
+ 		request.setMaidenName("C");
+ 		request.setEmail("abc@obopay.com");
+ 		request.setGender(ObopayWebServiceConstants.CUSTOMER_GENDER_MALE);
+ 		request.setBirthDate("01-01-1980");
+ 		request.setBirthPlace("bangalore");
+ 		request.setNationality(ObopayWebServiceConstants.NATIONALITY_PASSPORT);
+ 		request.setResidentFlag(ObopayWebServiceConstants.YES);
+ 		request.setCustomerId("abc1234");
+ 		request.setIdDeliveryDate("01-01-2004");
+ 		request.setPin("1234"));//This is mandatory if the request is from customerRegistrationWithPIN method
+ 		request.setAdditionalField1("addi1");
+ 		request.setAdditionalField2("addi2");
+ 		request.setAdditionalField3("addi3");
+ 		request.setAdditionalField4("addi4");
+ 		request.setAdditionalField5("addi5");
+ 		request.setPreferredLanguage(ObopayWebServiceConstants.CUSTOMER_PREFERRED_LANGUGAGE_FRENCH);
+ 		request.setJob("IT");
+ 		request.setEmployer("Obopay");
+ 		request.setAnnualIncome(ObopayWebServiceConstants.CUSTOMER_ANNUAL_INCOME_1);
+ 
+ 		request.setSubsidiaryBankAccount("1234567890");
+ 		request.setPartnerBankAccount1("1234567891");
+ 		request.setCustRegAddField("add field");
+ 		
+ 		AddressDetails addressDetails = new AddressDetails();
+		addressDetails.setAddress("#11");
+		addressDetails.setSite("Axis Building");
+ 		addressDetails.setOffice("MG Road");
+ 		addressDetails.setPostalCode("123456");
+ 		addressDetails.setCity("BANGALORE");
+ 
+ 		request.setAddressDetails(addressDetails);
+ 		
+ 		WhiteList whiteList = new WhiteList();
+		whiteList.setWhiteListedNumber1(new Long(919876543210));
+		whiteList.setWhiteListedNumber2(new Long(919876543211));
+		whiteList.setWhiteListedNumber3(new Long(919876543212));
+		whiteList.setWhiteListedNumber4(new Long(919876543213));
+		whiteList.setWhiteListedNumber5(new Long(919876543214));
+		whiteList.setWhiteListedNumber6(new Long(919876543215));
+		whiteList.setWhiteListedNumber7(new Long(919876543216));
+		whiteList.setWhiteListedNumber8(new Long(919876543217));
+		whiteList.setWhiteListedNumber9(new Long(919876543218));
+		whiteList.setWhiteListedNumber10(new Long(919876543219));
+
+		request.setWhiteList(whiteList);
+
+ &lt;/pre&gt;
+ 
+ The below table describes the fields in RegistrationRequest object and its properties:
+ &lt;br&gt;
+
+
+&lt;style type="text/css"&gt;
+table.tableizer-table {border: 1px solid #CCC; font-family: Arial, Helvetica, sans-serif; font-size: 12px;} .tableizer-table td {padding: 4px; margin: 3px; border: 1px solid #ccc;}
+.tableizer-table th {background-color: #104E8B; color: #FFF; font-weight: bold;}
+&lt;/style&gt;
+&lt;table class="tableizer-table"&gt;
+
+&lt;tr class="tableizer-firstrow"&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;Mandatory&lt;/th&gt;&lt;th&gt;DataType&lt;/th&gt;&lt;th&gt;Minimum Length&lt;/th&gt;&lt;th&gt;Maximum Length&lt;/th&gt;&lt;th&gt;Allowed Characters&lt;/th&gt;&lt;th&gt;Sample&lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;requestId&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;123,987&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;externalAgentId&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;111,234,234&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;externalBranchId&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;111,234,234&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;country&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;12&lt;/td&gt;&lt;td&gt;alphabets&lt;/td&gt;&lt;td&gt;SGBC,SGCB&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;customerPhoneNumber&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;9999955555&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;transactionType&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;predefined constants&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;pin&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;6&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;1111, 3222&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;custAccountApprovalMode&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;Predefined Values&lt;/td&gt;&lt;td&gt;Predefined Values&lt;/td&gt;&lt;td&gt;predefined constants&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;fullname&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;alphabets, numeric and special  characters:{" "}&lt;/td&gt;&lt;td&gt;paul1, john&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;lastName&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;alphabets, numeric and special  characters:{" "}&lt;/td&gt;&lt;td&gt;paul1, john&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;MaidenName&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;alphabets, numeric and special  characters:{" "}&lt;/td&gt;&lt;td&gt;paul1, john&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;email&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;64&lt;/td&gt;&lt;td&gt;Valid email address&lt;/td&gt;&lt;td&gt;Joh.sm29@obopay.com&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;gender&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;Predefined Values&lt;/td&gt;&lt;td&gt;Predefined Values&lt;/td&gt;&lt;td&gt;predefined constants&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;birthDate&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;predefined format&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;birthPlace&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;128&lt;/td&gt;&lt;td&gt;alphabets, numeric and special  characters:{" "}&lt;/td&gt;&lt;td&gt;hand writer, key pad&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;nationality&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;Predefined Values&lt;/td&gt;&lt;td&gt;Predefined Values&lt;/td&gt;&lt;td&gt;predefined constants&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;residentFlag&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;Predefined Values&lt;/td&gt;&lt;td&gt;Predefined Values&lt;/td&gt;&lt;td&gt;predefined constants&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;customerId&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;14&lt;/td&gt;&lt;td&gt;alphabets, numeric and specialcharacters:{" ","@","#","$","_","-",",",".","/"}&lt;/td&gt;&lt;td&gt;hdndn123@#$, hk jkd_&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;idDeliveryDate&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;predefined format&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;preferredLanguage&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;Predefined Values&lt;/td&gt;&lt;td&gt;Predefined Values&lt;/td&gt;&lt;td&gt;predefined constants&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;job&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;32&lt;/td&gt;&lt;td&gt;alphabets, numeric and special  characters:{" "}&lt;/td&gt;&lt;td&gt;hand writer, key pad&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;employer&lt;/td&gt;&lt;td&gt;O&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;32&lt;/td&gt;&lt;td&gt;alphabets, numeric and special  characters:{" "}&lt;/td&gt;&lt;td&gt;hand writer, key pad&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;annualIncome&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;Predefined Values&lt;/td&gt;&lt;td&gt;Predefined Values&lt;/td&gt;&lt;td&gt;predefined constants&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;subsidiaryBankAccount&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;32&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;234234234, 23423944&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;partnerBankAccount1&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;32&lt;/td&gt;&lt;td&gt;alpha numeric inpredefinedformat&lt;/td&gt;&lt;td&gt;&lt;CMS&gt;&lt;12121212&gt;&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField1&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;add 1&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField2&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;add 2&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField3&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;add 3&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField4&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;add 4&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField5&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;add 5&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:java="java:com.obopay.ws.data" base="java:NonFinancialTransactionRequest">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="CustRegAddField" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the customer registration additional fields.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="CustAccountApprovalMode" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the customer account approval mode.
+ 
+ Possible values are "Automatic" or "Manual"
+ If Customer Account Approval Mode is “Automatic” then account status is directly put in status “Approved”.
+ No subsidiary back-office approval is required. If Customer Account Approval Mode is “Manual” the account
+ creation is done the same way as done through GAT by Teller. Account creation status is set to “Pending” and
+ the subsidiary backoffice will have to later approve/decline the account using GAT</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="CustomerPhoneNumber" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the customer phone number (International format, starting with country code – 
+ ex. 336xxx for a French mobile phone).</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="PreferredLanguage" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the preferred language.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="Job" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the type of occupation the customer holds.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="Employer" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the employer.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="AnnualIncome" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the annual income.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="SubsidiaryBankAccount" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the subsidiary bank account.
+ 
+ The SGBS Account Number which will be numeric of max 32 digits</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="PartnerBankAccount1" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the partner bank account1.
+ 
+ The partner Account Number which will be numeric of max 32 digits.
+ Suggested Format &lt;ACCOUNT NUMBER&gt; Eg; &lt;12345678910&gt;</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="FirstName" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the first name of the customer.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="LastName" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the last name of the customer.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="MaidenName" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the maiden name of the customer.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="Email" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the email id of the customer with acceptable domains.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="Gender" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the gender of the customer.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="BirthDate" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the date of birth.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="BirthPlace" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the birth place of the customer.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="Nationality" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the nationality of the customer.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="ResidentFlag" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the resident flag.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="CustomerId" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the customer id.
+ 
+ The identity of the customer and values will be alpahnumeric</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="IdDeliveryDate" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the id delivery date.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="DeliveryLocation" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the delivery location.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="Pin" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the PIN encrypted in AES by partner platform, used by the customer for certain Obopay business operations.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="AddressDetails" nillable="true" type="java:AddressDetails">
+                <xs:annotation>
+                  <xs:documentation>Gets the address details.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="WhiteList" nillable="true" type="java:WhiteList">
+                <xs:annotation>
+                  <xs:documentation>Gets the white list.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="IdType" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the Id type.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="CustomerType" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the Customer type.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="CompanyName" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the company name</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="TerminalId" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the Terminal Id</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="NonFinancialTransactionRequest">
+        <xs:annotation>
+          <xs:documentation>Abstracts Obopay Payment Service client request for a non-financial transaction.</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:java="java:com.obopay.ws.data" base="java:AbstractRequest"/>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CashInRequest">
+        <xs:annotation>
+          <xs:documentation>CashInRequest is the request to be used to invoke the Obopay business operation - &lt;i&gt;Customer Cash In&lt;/i&gt;.
+ 
+ The request for the Obopay business operation should be preceded by request to &lt;i&gt;authorize&lt;/i&gt; method.
+ The request is not successful if the &lt;i&gt;Request Id&lt;/i&gt; does not match the one in the corresponding &lt;i&gt;Authorization&lt;/i&gt; Request.
+ 
+ An object of this class contains all necessary information to transfer funds into the customer prepaid account.
+ &lt;br&gt;
+ &lt;br&gt;
+ Example of a valid CashInRequest Object
+ &lt;br&gt;
+ &lt;pre&gt;
+ 		CashInRequest request = new CashInRequest();
+		request.setRequestId("123"));
+		request.setCountry("SGBS");
+		request.setExternalAgentId("453");
+		request.setExternalBranchId("1233");
+ 		request.setCustomerPhoneNumber("919876543210");
+ 		request.setTransactionType(ObopayWebServiceConstants.CUSTOMER_CASHIN);
+ 		request.setAmount(new BigDecimal(1000));
+ 		request.setCurrency("952");
+ 		request.setAdditionalField1("addi1");
+ 		request.setAdditionalField2("addi2");
+ 		request.setAdditionalField3("addi3");
+ 		request.setAdditionalField4("addi4");
+ 		request.setAdditionalField5("addi5");
+ &lt;/pre&gt;
+ The below table describes the fields in CashInRequest object and its properties:
+ &lt;br&gt;
+
+
+ &lt;style type="text/css"&gt;
+ table.tableizer-table {border: 1px solid #CCC; font-family: Arial, Helvetica, sans-serif; font-size: 12px;} .tableizer-table td {padding: 4px; margin: 3px; border: 1px solid #ccc;}
+ .tableizer-table th {background-color: #104E8B; color: #FFF; font-weight: bold;}
+ &lt;/style&gt;
+ &lt;table class="tableizer-table"&gt;
+ &lt;tr class="tableizer-firstrow"&gt;&lt;th&gt;&lt;/th&gt;&lt;th&gt;Mandatory&lt;/th&gt;&lt;th&gt;DataType&lt;/th&gt;&lt;th&gt;Minimum Length&lt;/th&gt;&lt;th&gt;Maximum Length&lt;/th&gt;&lt;th&gt;Allowed Characters&lt;/th&gt;&lt;th&gt;Sample&lt;/th&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;requestId&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;123,987&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;externalAgentId&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;111,234,234&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;externalBranchId&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;111,234,234&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;country&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;12&lt;/td&gt;&lt;td&gt;alphabets&lt;/td&gt;&lt;td&gt;SGBC,SGCB&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;customerPhoneNumber&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;9999955555&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;transactionType&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;predefined constants&lt;/td&gt;&lt;td&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;amount&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;BigDecimal&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;16&lt;/td&gt;&lt;td&gt;Numbers and specialcharacters:{"."}&lt;/td&gt;&lt;td&gt;1000, 890.40&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;currency&lt;/td&gt;&lt;td&gt;Y&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;840,147&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;pin&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;td&gt;6&lt;/td&gt;&lt;td&gt;Only Numbers&lt;/td&gt;&lt;td&gt;1111, 3222&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField1&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;add 1&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField2&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;add 2&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField3&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;add 3&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField4&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;add 4&lt;/td&gt;&lt;/tr&gt; &lt;tr&gt;&lt;td&gt;additionalField5&lt;/td&gt;&lt;td&gt;N&lt;/td&gt;&lt;td&gt;String&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;alphanumeric&lt;/td&gt;&lt;td&gt;add 5&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension xmlns:java="java:com.obopay.ws.data" base="java:FinancialTransactionRequest">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="Pin" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the PIN encrypted in AES by partner platform, used by the customer for certain Obopay business operations.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element minOccurs="1" name="TerminalId" nillable="true" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>Gets the Terminal Id</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+      <xs:schema xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://www.obopay.com/xml/oews/v1"
+                 xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                 attributeFormDefault="unqualified" elementFormDefault="qualified"
+                 targetNamespace="http://www.obopay.com/xml/oews/v1">
+      <xs:import namespace="java:com.obopay.ws.data"/>
+      <xs:element name="authorize">
+        <xs:complexType>
+          <xs:sequence>
+              <xs:element xmlns:java="java:com.obopay.ws.data" name="authorizationRequest"
+                          type="java:AuthorizationRequest"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="authorizeResponse">
+        <xs:complexType>
+          <xs:sequence>
+              <xs:element xmlns:java="java:com.obopay.ws.data" name="return" type="java:AuthorizationResponse"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="customerRegistration">
+        <xs:complexType>
+          <xs:sequence>
+              <xs:element xmlns:java="java:com.obopay.ws.data" name="registrationRequest"
+                          type="java:RegistrationRequest"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="customerRegistrationResponse">
+        <xs:complexType>
+          <xs:sequence>
+              <xs:element xmlns:java="java:com.obopay.ws.data" name="return" type="java:RegistrationResponse"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="process">
+        <xs:complexType>
+          <xs:sequence>
+              <xs:element xmlns:java="java:com.obopay.ws.data" name="request" type="java:ObopayWebServiceData"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="processResponse">
+        <xs:complexType>
+          <xs:sequence>
+              <xs:element xmlns:java="java:com.obopay.ws.data" name="return" type="java:ObopayWebServiceData"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="customerViralCashOut">
+        <xs:complexType>
+          <xs:sequence>
+              <xs:element xmlns:java="java:com.obopay.ws.data" name="viralCashOutRequest"
+                          type="java:ViralCashOutRequest"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="customerViralCashOutResponse">
+        <xs:complexType>
+          <xs:sequence>
+              <xs:element xmlns:java="java:com.obopay.ws.data" name="return" type="java:ViralCashOutResponse"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="customerCashIn">
+        <xs:complexType>
+          <xs:sequence>
+              <xs:element xmlns:java="java:com.obopay.ws.data" name="cashInRequest" type="java:CashInRequest"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="customerCashInResponse">
+        <xs:complexType>
+          <xs:sequence>
+              <xs:element xmlns:java="java:com.obopay.ws.data" name="return" type="java:CashInResponse"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="customerCashOut">
+        <xs:complexType>
+          <xs:sequence>
+              <xs:element xmlns:java="java:com.obopay.ws.data" name="cashOutRequest" type="java:CashOutRequest"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="customerCashOutResponse">
+        <xs:complexType>
+          <xs:sequence>
+              <xs:element xmlns:java="java:com.obopay.ws.data" name="return" type="java:CashOutResponse"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="authorize">
+    <WL5G3N0:part element="WL5G3N1:authorize" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="authorizeResponse">
+    <WL5G3N0:part element="WL5G3N1:authorizeResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="customerRegistration">
+    <WL5G3N0:part element="WL5G3N1:customerRegistration" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="customerRegistrationResponse">
+    <WL5G3N0:part element="WL5G3N1:customerRegistrationResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="process">
+    <WL5G3N0:part element="WL5G3N1:process" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="processResponse">
+    <WL5G3N0:part element="WL5G3N1:processResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="customerViralCashOut">
+    <WL5G3N0:part element="WL5G3N1:customerViralCashOut" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="customerViralCashOutResponse">
+    <WL5G3N0:part element="WL5G3N1:customerViralCashOutResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="customerCashIn">
+    <WL5G3N0:part element="WL5G3N1:customerCashIn" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="customerCashInResponse">
+    <WL5G3N0:part element="WL5G3N1:customerCashInResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="customerCashOut">
+    <WL5G3N0:part element="WL5G3N1:customerCashOut" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="customerCashOutResponse">
+    <WL5G3N0:part element="WL5G3N1:customerCashOutResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="ObopayExternalWebService">
+    <WL5G3N0:operation name="authorize" parameterOrder="parameters">
+      <WL5G3N0:input message="WL5G3N1:authorize"/>
+      <WL5G3N0:output message="WL5G3N1:authorizeResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="customerRegistration" parameterOrder="parameters">
+      <WL5G3N0:input message="WL5G3N1:customerRegistration"/>
+      <WL5G3N0:output message="WL5G3N1:customerRegistrationResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="process" parameterOrder="parameters">
+      <WL5G3N0:input message="WL5G3N1:process"/>
+      <WL5G3N0:output message="WL5G3N1:processResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="customerViralCashOut" parameterOrder="parameters">
+      <WL5G3N0:input message="WL5G3N1:customerViralCashOut"/>
+      <WL5G3N0:output message="WL5G3N1:customerViralCashOutResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="customerCashIn" parameterOrder="parameters">
+      <WL5G3N0:input message="WL5G3N1:customerCashIn"/>
+      <WL5G3N0:output message="WL5G3N1:customerCashInResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="customerCashOut" parameterOrder="parameters">
+      <WL5G3N0:input message="WL5G3N1:customerCashOut"/>
+      <WL5G3N0:output message="WL5G3N1:customerCashOutResponse"/>
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="ObopayExternalWebServiceServiceSoapBinding" type="WL5G3N1:ObopayExternalWebService">
+    <WL5G3N2:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <WL5G3N0:operation name="authorize">
+      <WL5G3N2:operation style="document"/>
+      <WL5G3N0:input>
+        <WL5G3N2:body parts="parameters" use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body parts="parameters" use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="customerRegistration">
+      <WL5G3N2:operation style="document"/>
+      <WL5G3N0:input>
+        <WL5G3N2:body parts="parameters" use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body parts="parameters" use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="process">
+      <WL5G3N2:operation style="document"/>
+      <WL5G3N0:input>
+        <WL5G3N2:body parts="parameters" use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body parts="parameters" use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="customerViralCashOut">
+      <WL5G3N2:operation style="document"/>
+      <WL5G3N0:input>
+        <WL5G3N2:body parts="parameters" use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body parts="parameters" use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="customerCashIn">
+      <WL5G3N2:operation style="document"/>
+      <WL5G3N0:input>
+        <WL5G3N2:body parts="parameters" use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body parts="parameters" use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="customerCashOut">
+      <WL5G3N2:operation style="document"/>
+      <WL5G3N0:input>
+        <WL5G3N2:body parts="parameters" use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body parts="parameters" use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:service name="ObopayExternalWebServiceService">
+    <WL5G3N0:port binding="WL5G3N1:ObopayExternalWebServiceServiceSoapBinding" name="ObopayExternalWebServiceSoapPort">
+      <WL5G3N2:address location="https://172.23.100.85:8003/ObopayExternalWS/ObopayExternalWebServiceV1"/>
+    </WL5G3N0:port>
+  </WL5G3N0:service>
+</WL5G3N0:definitions>

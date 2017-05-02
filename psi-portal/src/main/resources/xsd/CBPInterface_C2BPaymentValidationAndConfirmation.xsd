@@ -1,0 +1,86 @@
+      <schema targetNamespace="http://cps.huawei.com/cpsinterface/c2bpayment" xmlns="http://www.w3.org/2001/XMLSchema">
+         <element name="C2BPaymentValidationRequest">
+            <complexType>
+               <sequence>
+                  <element name="TransType" type="string"/>
+                  <element name="TransID" type="string"/>
+                  <element name="TransTime" type="string"/>
+                  <element name="TransAmount" type="string"/>
+                  <element name="BusinessShortCode" type="xs:string"/>
+                  <element name="BillRefNumber" type="xs:string" minOccurs="0"/>
+                  <element name="InvoiceNumber" type="xs:string" minOccurs="0"/>
+                  <element name="MSISDN" type="string"/>
+                  <element name="KYCInfo" minOccurs="0" maxOccurs="unbounded">
+                     <complexType>
+                        <sequence>
+                           <element name="KYCName">
+                              <annotation>
+                                 <documentation/>
+                              </annotation>
+                              <simpleType>
+                                 <restriction base="xs:string">
+                                    <maxLength value="255"/>
+                                 </restriction>
+                              </simpleType>
+                           </element>
+                           <element name="KYCValue">
+                              <simpleType>
+                                 <restriction base="xs:string">
+                                    <maxLength value="128"/>
+                                 </restriction>
+                              </simpleType>
+                           </element>
+                        </sequence>
+                     </complexType>
+                  </element>
+               </sequence>
+            </complexType>
+         </element>
+         <element name="C2BPaymentValidationResult">
+            <complexType>
+               <sequence>
+                  <element name="ResultCode">
+                     <simpleType>
+                        <restriction base="xs:string">
+                           <maxLength value="20"/>
+                        </restriction>
+                     </simpleType>
+                  </element>
+                  <element name="ResultDesc" minOccurs="0">
+                     <simpleType>
+                        <restriction base="xs:string">
+                           <maxLength value="1024"/>
+                        </restriction>
+                     </simpleType>
+                  </element>
+                  <element name="ThirdPartyTransID" type="xs:string" minOccurs="0"/>
+               </sequence>
+            </complexType>
+         </element>
+         <element name="C2BPaymentConfirmationRequest">
+            <complexType>
+               <sequence>
+                  <element name="TransType" type="xs:string"/>
+                  <element name="TransID" type="string"/>
+                  <element name="TransTime" type="string"/>
+                  <element name="TransAmount" type="string"/>
+                  <element name="BusinessShortCode" type="xs:string"/>
+                  <element name="BillRefNumber" type="xs:string" minOccurs="0"/>
+                  <element name="InvoiceNumber" type="xs:string" minOccurs="0"/>
+                  <element name="OrgAccountBalance" type="xs:string"/>
+                  <element name="ThirdPartyTransID" type="xs:string" minOccurs="0"/>
+                  <element name="MSISDN" type="string"/>
+                  <element name="KYCInfo" minOccurs="0" maxOccurs="unbounded">
+                     <complexType>
+                        <sequence>
+                           <element name="KYCName" type="string"/>
+                           <element name="KYCValue" type="xs:string"/>
+                        </sequence>
+                     </complexType>
+                  </element>
+               </sequence>
+            </complexType>
+         </element>
+         <element name="C2BPaymentConfirmationResult" type="xs:string"/>
+      </schema>
+

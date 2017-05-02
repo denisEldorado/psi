@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!--<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">-->
+<!--<ns4:RequestSOAPEnvelop xmlns:ns4="http://www.huawei.com.cn/schema/common/v2_1">-->
+<!--<RequestSoapHeader xmlns:ns2="http://www.huawei.com.cn/schema/common/v2_1">-->
+<!--<spId>107020</spId>-->
+<!--<spPassword>739c2600b1ac60550ceef548a7c39bf8a13d034722a4c9688e004ebf16773944</spPassword>-->
+<!--<serviceId>107020000</serviceId>-->
+<!--<timeStamp>20170214004529</timeStamp>-->
+<!--</RequestSoapHeader>-->
+<!--<RequestSOAPBody xmlns:ns3="http://www.huawei.com.cn/schema/common/v2_1">-->
+<!--<loc:notifyQueueTimeout xmlns:loc="http://www.csapi.org/schema/timeoutnotification/data/v1_0/local}">-->
+<!--<loc:originatorConversationID>OriginatorConversationID0</loc:originatorConversationID>-->
+<!--<loc:originRequest>PHNvYXBlbnY6RW52ZWxvcGUgeG1sbnM6c29hcGVudj0iaHR0cDovL3NjaGVtYXMueG1sc29hcC5v-->
+<!--</loc:originRequest>-->
+<!--</loc:notifyQueueTimeout>-->
+<req:ResultMsg xmlns:req="http://cps.huawei.com/cpsinterface/result">
+    <![CDATA[
+    <?xml version="1.0" encoding="UTF-8"?>
+    <Result>
+        <ResultType>0</ResultType>
+        <ResultCode>0</ResultCode>
+        <ResultDesc>The service request is processed successfully.</ResultDesc>
+        <OriginatorConversationID>D7866050-CE7C-46B9-BE97-D9FBACC69041</OriginatorConversationID>
+        <ConversationId>B72AC018-86E4-477A-B4B0-9EC65AE8A2FE</ConversationId>
+        <TransactionId>2782728972</TransactionId>
+        <ResultParameters>
+            <ResultParameter>
+                <Key>TransactionReceipt</Key>
+                <Value>2782728972</Value>
+            </ResultParameter>
+            <ResultParameter>
+                <Key>TransactionAmount</Key>
+                <Value>100.00</Value>
+            </ResultParameter>
+            <ResultParameter>
+                <Key>TransactionCompletedDateTime</Key>
+                <Value>22.03.2012 12:20:20</Value>
+            </ResultParameter>
+            <ResultParameter>
+                <Key>ReceiverPartyPublicName</Key>
+                <Value>254778866553868-Kip Keino</Value>
+            </ResultParameter>
+            PROJECT NAME: M-PESA
+            DOCUMENT NAME: B2C API SPECIFICATION VERSION: 1.5
+            COMPANY/DIVISION: PRODUCT AND SERVICE DEVELOPMENT DATE: 7TH OCTOBER 2014
+            42
+            <ResultParameter>
+                <Key>B2CWorkingAccountAvailableFunds</Key>
+                <Value>10000.00</Value>
+            </ResultParameter>
+            <ResultParameter>
+                <Key>B2CUtilityAccountAvailableFunds</Key>
+                <Value>100000.00</Value>
+            </ResultParameter>
+            <ResultParameter>
+                <Key>B2CChargesPaidAccountAvailableFunds</Key>
+                <Value>1000.00</Value>
+            </ResultParameter>
+            <ResultParameter>
+                <Key>B2CRecipientIsRegisteredCustomer</Key>
+                <Value>Y</Value>
+            </ResultParameter>
+            <ResultParameter>
+                <Key>B2CWithdrawalChargeAmount</Key>
+                <Value>12.00</Value>
+            </ResultParameter>
+        </ResultParameters>
+        <ReferenceData>
+            <ReferenceItem>
+                <Key>Occasion</Key>
+                <Value>Christmas</Value>
+            </ReferenceItem>
+        </ReferenceData>
+    </Result>
+    ]]>
+</req:ResultMsg>
+        <!--</RequestSOAPBody>-->
+        <!--</ns4:RequestSOAPEnvelop>-->
+        <!--</RequestSOAPBody>-->
+        <!--</SOAP-ENV:Envelope>-->
+        <!--</soapenv:Envelope>-->

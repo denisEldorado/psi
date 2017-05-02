@@ -1,0 +1,26 @@
+<configuration>
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener"/>
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+        <resetJUL>true</resetJUL>
+    </contextListener>
+
+    <!-- To enable JMX Management -->
+    <jmxConfigurator/>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!--<pattern>%.-1level|CONFIG|%-30.30logger{0}|%msg%n</pattern>-->
+            <pattern>%date|%.-1level|CONFIG|%-30.30logger{0}\(%line\)|%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.muhia.app.psi" level="WARN"/>
+    <logger name="org.muhia.app.psi.config" level="info"/>
+    <logger name="org.freemarker" level="info"/>
+
+    <!--<include resource="logJpaToFile.xml" />-->
+
+    <root level="OFF">
+        <appender-ref ref="console"/>
+    </root>
+</configuration>

@@ -1,0 +1,36 @@
+description = projectInfraArtifcatId
+
+jar {
+    manifest {
+        attributes 'Main-Class': projectInfraMainClass
+    }
+    baseName = projectInfraArtifcatId
+    version = projectVersion
+}
+
+springBoot {
+    mainClass = projectInfraMainClass
+}
+
+bootRun {
+    addResources = false
+    main = projectInfraMainClass
+}
+
+
+dependencies {
+    compile project(':'+projectConfigArtifcatId)
+
+    // https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api
+    compile group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.1-api', version: '1.0.0.Final'
+
+
+    compile(group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.2') {
+        exclude(module: 'commons-logging')
+    }
+
+    testCompile(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '1.4.3.RELEASE') {
+        exclude(module: 'commons-logging')
+    }
+    testCompile project(':psi-config').sourceSets.test.output
+}

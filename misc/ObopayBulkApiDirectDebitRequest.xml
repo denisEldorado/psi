@@ -1,0 +1,13 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <ns2:DirectDebitAPI xmlns:ns2="http://tempuri.org/" xmlns:ns3="http://www.obopay.com/xml/bulkpayment/v1"
+                            xmlns:ns4="java:com.obopay.ws.bulkpayment.zain">
+            <ns2:UserName>Blusky</ns2:UserName>
+            <ns2:Password>password</ns2:Password>
+            <ns2:CustomerMobileNumber>0733814627</ns2:CustomerMobileNumber>
+            <ns2:Amount>1</ns2:Amount>
+            <ns2:MerchantWalletMsisdn>0737777779</ns2:MerchantWalletMsisdn>
+        </ns2:DirectDebitAPI>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

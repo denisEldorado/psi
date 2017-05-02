@@ -1,0 +1,228 @@
+<WL5G3N0:definitions xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://www.zain.com/"
+                     xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/" xmlns=""
+                     name="MerchantQueryWebServiceServiceDefinitions" targetNamespace="http://www.zain.com/">
+<WL5G3N0:types>
+<xs:schema xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://www.zain.com/" xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="java:com.obopay.ws.merchantquery.zain">
+<xs:import namespace="java:javax.xml.datatype"/>
+<xs:complexType name="Response">
+<xs:sequence>
+<xs:element minOccurs="1" name="Referenceld" nillable="true" type="xs:string">
+<xs:annotation>
+<xs:documentation>Gets the value of the referenceld property.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="1" name="Status" nillable="false" type="xs:int">
+<xs:annotation>
+<xs:documentation>Gets the value of the status property.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="1" name="Msisdn" nillable="true" type="xs:string">
+<xs:annotation>
+<xs:documentation>Gets the value of the msisdn property.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="1" name="FirstName" nillable="true" type="xs:string">
+<xs:annotation>
+
+    <xs:documentation>Gets the value of the fullname property.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="1" name="LastName" nillable="true" type="xs:string">
+<xs:annotation>
+<xs:documentation>Gets the value of the lastName property.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="1" name="TransactionId" nillable="false" type="xs:long">
+<xs:annotation>
+<xs:documentation>Gets the value of the transactionId property.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="1" name="PaymentDetails" nillable="true" type="xs:string">
+<xs:annotation>
+<xs:documentation>Gets the value of the paymentDetails property.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element xmlns:java="java:javax.xml.datatype" minOccurs="1" name="CreatedTimestamp" nillable="true" type="java:XMLGregorianCalendar">
+<xs:annotation>
+<xs:documentation>Gets the value of the createdTimestamp property.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="1" name="Amount" nillable="true" type="xs:decimal">
+<xs:annotation>
+<xs:documentation>Gets the value of the amount property.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="1" name="Message" nillable="true" type="xs:string">
+<xs:annotation>
+<xs:documentation>Gets the value of the message property.</xs:documentation>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="RequestTransactionsResponse">
+<xs:sequence>
+<xs:element minOccurs="1" name="Status" nillable="false" type="xs:int">
+<xs:annotation>
+<xs:documentation>Gets the value of the status property.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="1" name="TotalTransactions" nillable="false" type="xs:int">
+<xs:annotation>
+<xs:documentation>Gets the value of the totalTransactions property.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="1" name="TotalAmount" nillable="true" type="xs:decimal">
+<xs:annotation>
+<xs:documentation>Gets the value of the totalAmount property.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="1" name="Transactions" nillable="true" type="xs:string">
+<xs:annotation>
+<xs:documentation>Gets the value of the transactions property.</xs:documentation>
+</xs:annotation>
+</xs:element>
+<xs:element minOccurs="1" name="Message" nillable="true" type="xs:string">
+<xs:annotation>
+<xs:documentation>Gets the value of the message property.</xs:documentation>
+</xs:annotation>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+<xs:schema xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://www.zain.com/" xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="java:javax.xml.datatype">
+<xs:complexType name="XMLGregorianCalendar">
+<xs:sequence>
+<xs:element minOccurs="1" name="Month" nillable="false" type="xs:int"/>
+<xs:element minOccurs="1" name="Day" nillable="false" type="xs:int"/>
+<xs:element minOccurs="1" name="Timezone" nillable="false" type="xs:int"/>
+<xs:element minOccurs="1" name="Hour" nillable="false" type="xs:int"/>
+<xs:element minOccurs="1" name="Minute" nillable="false" type="xs:int"/>
+<xs:element minOccurs="1" name="Second" nillable="false" type="xs:int"/>
+<xs:element minOccurs="1" name="Millisecond" nillable="false" type="xs:int"/>
+<xs:element minOccurs="1" name="FractionalSecond" nillable="true" type="xs:decimal"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+<xs:schema xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://www.zain.com/" xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.zain.com/">
+<xs:import namespace="java:com.obopay.ws.merchantquery.zain"/>
+<xs:element name="RequestTransactionByTimeInterval">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="userName" type="xs:string"/>
+<xs:element name="passWord" type="xs:string"/>
+<xs:element name="timeFrom" type="xs:string"/>
+<xs:element name="timeTo" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="RequestTransactionByTimeIntervalResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element xmlns:java="java:com.obopay.ws.merchantquery.zain" name="RequestTransactionByTimeIntervalResult" type="java:RequestTransactionsResponse"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="RequestTransactionByTimeIntervalDetailed">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="userName" type="xs:string"/>
+<xs:element name="passWord" type="xs:string"/>
+<xs:element name="timeFrom" type="xs:string"/>
+<xs:element name="timeTo" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="RequestTransactionByTimeIntervalDetailedResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element xmlns:java="java:com.obopay.ws.merchantquery.zain" name="RequestTransactionByTimeIntervalDetailedResult" type="java:RequestTransactionsResponse"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="RequestTransaction">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="userName" type="xs:string"/>
+<xs:element name="passWord" type="xs:string"/>
+<xs:element name="referenceId" type="xs:string"/>
+<xs:element name="msisdn" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="RequestTransactionResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element xmlns:java="java:com.obopay.ws.merchantquery.zain" name="RequestTransactionResult" type="java:Response"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+</WL5G3N0:types>
+<WL5G3N0:message name="RequestTransactionByTimeInterval">
+<WL5G3N0:part element="WL5G3N1:RequestTransactionByTimeInterval" name="parameters"/>
+</WL5G3N0:message>
+<WL5G3N0:message name="RequestTransactionByTimeIntervalResponse">
+<WL5G3N0:part element="WL5G3N1:RequestTransactionByTimeIntervalResponse" name="parameters"/>
+</WL5G3N0:message>
+<WL5G3N0:message name="RequestTransactionByTimeIntervalDetailed">
+<WL5G3N0:part element="WL5G3N1:RequestTransactionByTimeIntervalDetailed" name="parameters"/>
+</WL5G3N0:message>
+<WL5G3N0:message name="RequestTransactionByTimeIntervalDetailedResponse">
+<WL5G3N0:part element="WL5G3N1:RequestTransactionByTimeIntervalDetailedResponse" name="parameters"/>
+</WL5G3N0:message>
+<WL5G3N0:message name="RequestTransaction">
+<WL5G3N0:part element="WL5G3N1:RequestTransaction" name="parameters"/>
+</WL5G3N0:message>
+<WL5G3N0:message name="RequestTransactionResponse">
+<WL5G3N0:part element="WL5G3N1:RequestTransactionResponse" name="parameters"/>
+</WL5G3N0:message>
+<WL5G3N0:portType name="MerchantQueryWebService">
+<WL5G3N0:operation name="RequestTransactionByTimeInterval" parameterOrder="parameters">
+<WL5G3N0:input message="WL5G3N1:RequestTransactionByTimeInterval"/>
+<WL5G3N0:output message="WL5G3N1:RequestTransactionByTimeIntervalResponse"/>
+</WL5G3N0:operation>
+<WL5G3N0:operation name="RequestTransactionByTimeIntervalDetailed" parameterOrder="parameters">
+<WL5G3N0:input message="WL5G3N1:RequestTransactionByTimeIntervalDetailed"/>
+<WL5G3N0:output message="WL5G3N1:RequestTransactionByTimeIntervalDetailedResponse"/>
+</WL5G3N0:operation>
+<WL5G3N0:operation name="RequestTransaction" parameterOrder="parameters">
+<WL5G3N0:input message="WL5G3N1:RequestTransaction"/>
+<WL5G3N0:output message="WL5G3N1:RequestTransactionResponse"/>
+</WL5G3N0:operation>
+</WL5G3N0:portType>
+<WL5G3N0:binding name="MerchantQueryWebServiceServiceSoapBinding" type="WL5G3N1:MerchantQueryWebService">
+<WL5G3N2:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<WL5G3N0:operation name="RequestTransactionByTimeInterval">
+<WL5G3N2:operation soapAction="RequestTransactionByTimeInterval" style="document"/>
+<WL5G3N0:input>
+<WL5G3N2:body parts="parameters" use="literal"/>
+</WL5G3N0:input>
+<WL5G3N0:output>
+<WL5G3N2:body parts="parameters" use="literal"/>
+</WL5G3N0:output>
+</WL5G3N0:operation>
+<WL5G3N0:operation name="RequestTransactionByTimeIntervalDetailed">
+<WL5G3N2:operation soapAction="RequestTransactionByTimeIntervalDetailed" style="document"/>
+<WL5G3N0:input>
+<WL5G3N2:body parts="parameters" use="literal"/>
+</WL5G3N0:input>
+<WL5G3N0:output>
+<WL5G3N2:body parts="parameters" use="literal"/>
+</WL5G3N0:output>
+</WL5G3N0:operation>
+<WL5G3N0:operation name="RequestTransaction">
+<WL5G3N2:operation soapAction="RequestTransaction" style="document"/>
+<WL5G3N0:input>
+<WL5G3N2:body parts="parameters" use="literal"/>
+</WL5G3N0:input>
+<WL5G3N0:output>
+<WL5G3N2:body parts="parameters" use="literal"/>
+</WL5G3N0:output>
+</WL5G3N0:operation>
+</WL5G3N0:binding>
+<WL5G3N0:service name="MerchantQueryWebServiceService">
+<WL5G3N0:port binding="WL5G3N1:MerchantQueryWebServiceServiceSoapBinding" name="MerchantQueryWebServiceSoapPort">
+<WL5G3N2:address location="https://41.223.58.41:8446/MerchantQueryService.asmx"/>
+</WL5G3N0:port>
+</WL5G3N0:service>
+</WL5G3N0:definitions>

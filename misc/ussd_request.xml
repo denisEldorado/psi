@@ -1,0 +1,70 @@
+<RestClientRequest>
+  <option name="biscuits">
+    <list />
+  </option>
+  <option name="httpMethod" value="POST" />
+  <option name="urlBase" value="http://127.0.0.1:7021" />
+  <option name="urlPath" value="/ussd/ussdke" />
+  <option name="headers">
+    <list>
+      <KeyValuePair>
+        <option name="key" value="Accept" />
+        <option name="value" value="*/*" />
+      </KeyValuePair>
+      <KeyValuePair>
+        <option name="key" value="Cache-Control" />
+        <option name="value" value="no-cache" />
+      </KeyValuePair>
+    </list>
+  </option>
+  <option name="parameters">
+    <list>
+      <KeyValuePair>
+        <option name="key" value="userid" />
+        <option name="value" value="kzmuhia" />
+      </KeyValuePair>
+      <KeyValuePair>
+        <option name="key" value="password" />
+        <option name="value" value="pass123" />
+      </KeyValuePair>
+      <KeyValuePair>
+        <option name="key" value="input" />
+        <option name="value" value="533" />
+      </KeyValuePair>
+      <KeyValuePair>
+        <option name="key" value="sessionid" />
+        <option name="value" value="28022017202503" />
+      </KeyValuePair>
+      <KeyValuePair>
+        <option name="key" value="msisdn" />
+        <option name="value" value="254723703068" />
+      </KeyValuePair>
+      <KeyValuePair>
+        <option name="key" value="transactionid" />
+        <option name="value" value="28022017202503942807" />
+      </KeyValuePair>
+      <KeyValuePair>
+        <option name="key" value="imsi" />
+        <option name="value" value="639030825277051" />
+      </KeyValuePair>
+      <KeyValuePair>
+        <option name="key" value="newrequest" />
+        <option name="value" value="Y" />
+      </KeyValuePair>
+      <KeyValuePair>
+        <option name="key" value="code" />
+        <option name="value" value="533" />
+      </KeyValuePair>
+      <KeyValuePair>
+        <option name="key" value="status" />
+        <option name="value" value="9" />
+      </KeyValuePair>
+    </list>
+  </option>
+  <option name="parametersEnabled" value="true" />
+  <option name="haveTextToSend" value="false" />
+  <option name="haveFileToSend" value="false" />
+  <option name="isFileUpload" value="false" />
+  <option name="textToSend" value="" />
+  <option name="filesToSend" value="" />
+</RestClientRequest>

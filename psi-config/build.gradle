@@ -1,0 +1,29 @@
+
+description = projectConfigArtifcatId
+
+jar {
+    manifest {
+        attributes 'Main-Class': projectConfigMainClass
+    }
+	baseName = projectConfigArtifcatId
+	version = projectVersion
+}
+
+springBoot {
+    mainClass = projectConfigMainClass
+}
+
+bootRun {
+    addResources = false
+//    systemProperty 'spring.profiles.active', 'production'
+    main = projectConfigMainClass
+}
+
+
+dependencies {
+    compile 'org.apache.httpcomponents:httpclient:4.5.2'
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+         
+}
+

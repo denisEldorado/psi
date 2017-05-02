@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WL5G3N0:definitions xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/"
+                     xmlns:WL5G3N1="http://www.obopay.com/xml/bulkpayment/v1"
+                     xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/"
+                     name="BulkPaymentWebServiceNewServiceDefinitions"
+                     xmlns=""
+                     targetNamespace="http://www.obopay.com/xml/bulkpayment/v1">
+    <WL5G3N0:types>
+        <xs:schema xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/"
+                   xmlns:WL5G3N1="http://www.obopay.com/xml/bulkpayment/v1"
+                   xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/"
+                   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                   targetNamespace="http://www.obopay.com/xml/bulkpayment/v1" elementFormDefault="qualified"
+                   attributeFormDefault="unqualified">
+            <xs:import namespace="java:com.obopay.ws.bulkpayment.zain"/>
+            <xs:element name="CheckBalance">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element type="xs:string" name="username"/>
+                        <xs:element type="xs:string" name="password"/>
+                        <xs:element type="xs:string" name="nickname"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CheckBalanceResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element xmlns:java="java:com.obopay.ws.bulkpayment.zain" type="java:CheckBalanceResponse"
+                                    name="CheckBalanceResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="TrxPayment">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element type="xs:string" name="referenceid"/>
+                        <xs:element type="xs:string" name="customermsisdn"/>
+                        <xs:element type="xs:string" name="nickname"/>
+                        <xs:element type="xs:decimal" name="amount"/>
+                        <xs:element type="xs:string" name="batchref"/>
+                        <xs:element type="xs:string" name="username"/>
+                        <xs:element type="xs:string" name="password"/>
+                        <xs:element type="xs:string" name="narrative"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="TrxPaymentResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element type="xs:string" name="TrxPaymentResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="TrxRevert">
+                <xs:complexType>
+                    <xs:element type="xs:string" name="TrxRevert"/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="TrxRevertResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element xmlns:java="java:com.obopay.ws.bulkpayment.zain" type="java:TrxRevertResponse"
+                                    name="TrxRevertResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+        <xs:schema xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/"
+                   xmlns:WL5G3N1="http://www.obopay.com/xml/bulkpayment/v1"
+                   xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/"
+                   xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="java:com.obopay.ws.bulkpayment.zain"
+                   elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:complexType name="CheckBalanceResponse">
+                <xs:sequence>
+                    <xs:element type="xs:string" name="CheckBalanceResult" nillable="true" minOccurs="1"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="TrxRevertResponse">
+                <xs:sequence>
+                    <xs:element type="xs:string" name="TrxRevertResult" nillable="true" minOccurs="1"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </WL5G3N0:types>
+    <WL5G3N0:message name="CheckBalance">
+        <WL5G3N0:part name="parameters" element="WL5G3N1:CheckBalance"/>
+    </WL5G3N0:message>
+    <WL5G3N0:message name="CheckBalanceResponse">
+        <WL5G3N0:part name="parameters" element="WL5G3N1:CheckBalanceResponse"/>
+    </WL5G3N0:message>
+    <WL5G3N0:message name="TrxPayment">
+        <WL5G3N0:part name="parameters" element="WL5G3N1:TrxPayment"/>
+    </WL5G3N0:message>
+    <WL5G3N0:message name="TrxPaymentResponse">
+        <WL5G3N0:part name="parameters" element="WL5G3N1:TrxPaymentResponse"/>
+    </WL5G3N0:message>
+    <WL5G3N0:message name="TrxRevert">
+        <WL5G3N0:part name="parameters" element="WL5G3N1:TrxRevert"/>
+    </WL5G3N0:message>
+    <WL5G3N0:message name="TrxRevertResponse">
+        <WL5G3N0:part name="parameters" element="WL5G3N1:TrxRevertResponse"/>
+    </WL5G3N0:message>
+    <WL5G3N0:portType name="BulkPaymentWebServiceNew">
+        <WL5G3N0:operation name="CheckBalance" parameterOrder="parameters">
+            <WL5G3N0:input message="WL5G3N1:CheckBalance"/>
+            <WL5G3N0:output message="WL5G3N1:CheckBalanceResponse"/>
+        </WL5G3N0:operation>
+        <WL5G3N0:operation name="TrxPayment" parameterOrder="parameters">
+            <WL5G3N0:input message="WL5G3N1:TrxPayment"/>
+            <WL5G3N0:output message="WL5G3N1:TrxPaymentResponse"/>
+        </WL5G3N0:operation>
+        <WL5G3N0:operation name="TrxRevert" parameterOrder="parameters">
+            <WL5G3N0:input message="WL5G3N1:TrxRevert"/>
+            <WL5G3N0:output message="WL5G3N1:TrxRevertResponse"/>
+        </WL5G3N0:operation>
+    </WL5G3N0:portType>
+    <WL5G3N0:binding type="WL5G3N1:BulkPaymentWebServiceNew" name="BulkPaymentWebServiceNewServiceSoapBinding">
+        <WL5G3N2:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <WL5G3N0:operation name="CheckBalance">
+            <WL5G3N2:operation style="document" soapAction="CheckBalance"/>
+            <WL5G3N0:input>
+                <WL5G3N2:body use="literal" parts="parameters"/>
+            </WL5G3N0:input>
+            <WL5G3N0:output>
+                <WL5G3N2:body use="literal" parts="parameters"/>
+            </WL5G3N0:output>
+        </WL5G3N0:operation>
+        <WL5G3N0:operation name="TrxPayment">
+            <WL5G3N2:operation style="document" soapAction="TrxPayment"/>
+            <WL5G3N0:input>
+                <WL5G3N2:body use="literal" parts="parameters"/>
+            </WL5G3N0:input>
+            <WL5G3N0:output>
+                <WL5G3N2:body use="literal" parts="parameters"/>
+            </WL5G3N0:output>
+        </WL5G3N0:operation>
+        <WL5G3N0:operation name="TrxRevert">
+            <WL5G3N2:operation style="document" soapAction="TrxRevert"/>
+            <WL5G3N0:input>
+                <WL5G3N2:body use="literal" parts="parameters"/>
+            </WL5G3N0:input>
+            <WL5G3N0:output>
+                <WL5G3N2:body use="literal" parts="parameters"/>
+            </WL5G3N0:output>
+        </WL5G3N0:operation>
+    </WL5G3N0:binding>
+    <WL5G3N0:service name="BulkPaymentWebServiceNewService">
+        <WL5G3N0:port name="BulkPaymentWebServiceNewSoapPort"
+                      binding="WL5G3N1:BulkPaymentWebServiceNewServiceSoapBinding">
+            <WL5G3N2:address location="https://41.223.58.41:8446/MerchantPaymentService.asmx"/>
+        </WL5G3N0:port>
+    </WL5G3N0:service>
+</WL5G3N0:definitions>

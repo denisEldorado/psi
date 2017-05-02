@@ -1,0 +1,114 @@
+<div xmlns:th="http://www.w3.org/1999/xhtml" data-th-fragment="RegisterForm" id="myModal" class="modal fade"
+     role="dialog" xmlns="http://www.w3.org/1999/html">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Create An Account Now</h4>
+            </div>
+            <div class="modal-body">
+
+                <div id="wizard" class="form_wizard wizard_horizontal">
+
+                    <form class="form-horizontal form-label-left" novalidate action="#" th:action="@{/register}"
+                          th:object="${user}" method="post">
+                        <div id="step-1">
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name
+                                    <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input name="firstName" type="text" id="first-name" required="required"
+                                           class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Last Name <span
+                                        class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input name="lastName" type="text" id="last-name" required="required"
+                                           class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+
+                            <!--<div class="form-group">-->
+                            <!--<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">National ID <span class="required">*</span>-->
+                            <!--</label>-->
+                            <!--<div class="col-md-6 col-sm-6 col-xs-12">-->
+                            <!--<input name="nationalId" type="text" id="nationalId" required="required" class="form-control col-md-7 col-xs-12">-->
+                            <!--</div>-->
+                            <!--</div>-->
+
+                            <!--<div class="form-group">-->
+                            <!--<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">National ID <span class="required">*</span>-->
+                            <!--</label>-->
+                            <!--<div class="col-md-6 col-sm-6 col-xs-12">-->
+                            <!--<input class="form-control" id="date" name="dob" placeholder="DD/MM/YYY" type="text"/>-->
+                            <!--</div>-->
+                            <!--</div>-->
+
+
+                        </div>
+                        <div id="step-2">
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Email <span
+                                        class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input name="email" type="text" id="email" required="required"
+                                           class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Phone <span
+                                        class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="text" id="phone" name="phone" required="required"
+                                           class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div id="step-3">
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Password <span
+                                        class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="password" id="password" name="password" required="required"
+                                           class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Password <span
+                                        class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="password" id="password2" name="password2" required="required"
+                                           class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div id="step-4">
+                            <center><input type="submit" class="btn btn-success"/></center>
+
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>

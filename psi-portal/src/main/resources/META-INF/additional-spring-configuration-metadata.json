@@ -1,0 +1,19 @@
+{
+  "properties": [
+    {
+      "name": "server.tomcat.access-log-enabled",
+      "type": "java.lang.String",
+      "description": "Enable tomact access logs."
+    },
+    {
+      "name": "TAUCONFIG",
+      "type": "java.lang.String",
+      "description": "Path to the configuration folder."
+    },
+    {
+      "name": "CONFIG_PATH",
+      "type": "java.lang.String",
+      "description": "Application configuration path."
+    }
+  ]
+}

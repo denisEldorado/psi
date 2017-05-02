@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title th:text="${systemName}"></title>
+    <!-- Bootstrap -->
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="/webjars/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="/webjars/nprogress/nprogress.css" rel="stylesheet">
+    <link href="/webjars/datatables/css/dataTables.bootstrap.min.css" rel="stylesheet">
+
+    <link href="/webjars/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="css/custom.min.css" rel="stylesheet">
+    <link href="iCheck/skins/flat/green.css" rel="stylesheet">
+</head>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+                <div class="navbar nav_title" style="border: 0;">
+                    <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span th:text="${systemName}">Gentelella Alela!</span></a>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <!-- menu profile quick info -->
+                <div data-th-replace="fragments/ProfilePic::profilePic"></div>
+                <!-- /menu profile quick info -->
+
+                <br/>
+
+                <!-- sidebar menu -->
+                <div data-th-replace="fragments/Menu::Menu"></div>
+                <!-- /sidebar menu -->
+
+                <!-- /menu footer buttons -->
+                <div data-th-replace="fragments/MenuFooter::MenuFooter"></div>
+                <!-- /menu footer buttons -->
+            </div>
+        </div>
+
+        <!-- top navigation -->
+        <div data-th-replace="fragments/Header::Header"></div>
+        <!-- /top navigation -->
+
+
+        <div data-th-replace="fragments/Users::Users">users list</div>
+
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <div data-th-replace="fragments/ContentFooter::ContentFooter"></div>
+        <!-- /footer content -->
+    </div>
+
+
+    <div data-th-replace="fragments/AddUser::AddUser"></div>
+    <div data-th-replace="fragments/EditUser::EditUser"></div>
+    <div data-th-replace="fragments/Delete::Delete"></div>
+    <div data-th-replace="fragments/ViewUser::ViewUser"></div>
+</div>
+
+<!-- jQuery -->
+<script src="/webjars/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="/webjars/fastclick/fastclick.js"></script>
+<!-- NProgress -->
+<script src="/webjars/nprogress/nprogress.js"></script>
+<script src="/webjars/datatables/js/jquery.dataTables.min.js"></script>
+<script src="/webjars/datatables/js/dataTables.bootstrap.min.js"></script>
+
+<script src="/webjars/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="js/validator/validator.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="js/custom.min.js"></script>
+<script src="js/moment/moment.min.js"></script>
+<script src="iCheck/icheck.min.js"></script>
+<script src="js/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="js/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="js/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="js/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+<script src="js/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="js/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="js/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="js/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+<script src="js/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+<script src="js/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="js/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+<script src="js/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+<script src="js/jszip/dist/jszip.min.js"></script>
+<script src="js/pdfmake/build/pdfmake.min.js"></script>
+<script src="js/pdfmake/build/vfs_fonts.js"></script>
+
+<script>
+    $(document).ready(function () {
+        var date_input = $('input[name="dob"]'); //our date input has the name "date"
+        var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+        var options = {
+            format: 'dd/mm/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        };
+        date_input.datepicker(options);
+    })
+</script>
+</body>
+</html>

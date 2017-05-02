@@ -1,0 +1,13 @@
+ID,USSD_CODE_IMSI,MENU_KEY,MENU_ACTION,MENU_NEXT_ID,MENU_PARAMETER,MENU_IS_CHOICE,MENU_CONDITION,STATUS,CREATEDBY,CREATEDON,MODIFIEDBY,MODIFIEDON,DELETEBY,DELETEDON,TEXT_VAR_1,TEXT_VAR_2,TEXT_VAR_3,TEXT_VAR_4,TEXT_VAR_5,TEXT_VAR_6,MENU_SESSION_END,SECURE_MENU,POST_PROCESSING_INFO,PRE_PROCESSING_INFO
+1,5,entryPoint,welcomeMessage,,,0,,1,admin,,admin,,admin,,Welcome to Maisha Akiba Account,Sacco,,,,,N,N,,
+2,5,entryPoint,nextMenu,akibaRegistration,,1,cellphonenumber,1,admin,,admin,,admin,,Register,Jiandikishe,,,,,N,N,,
+3,5,entryPoint,nextMenu,cancelMenu,,1,cellphonenumber,1,admin,,admin,,admin,,Cancel,Account,,,,,Y,N,,
+,5,akibaRegistration,termAndConditions,,,0,cellphonenumber,1,admin,,admin,,admin,,I agree to the terms and conditions at http://www.maishabank.com,,,,,,N,N,,
+2,5,entryPoint,nextMenu,akibaRegistrationFname,,1,agreeterms,1,admin,,admin,,admin,,Yes,Jiandikishe,,,,,N,N,,
+3,5,entryPoint,nextMenu,cancelMenu,,1,disagreeterms,1,admin,,admin,,admin,,No,Account,,,,,Y,N,,
+,,akibaRegistrationFname,nextMenu,akibaRegistrationLname,,,firstname,,,,,,,,,,,,,,,,,
+,,akibaRegistrationLname,nextMenu,akibaRegistrationMname,,,lastname,,,,,,,,,,,,,,,,,
+,,akibaRegistrationMname,nextMenu,idTypeListing,,,middlename,,,,,,,,,,,,,,,,,
+,,idTypeListing,nextMenu,,,,,,,,,,,,,,,,,,,,,
+,,idTypeListing,nextMenu,akibaRegistrationIDNo,NationalIDNo,,,,,,,,,,,,,,,,,,,
+,,idTypeListing,nextMenu,akibaRegistrationIDNo,AlienIDNo,,,,,,,,,,,,,,,,,,,

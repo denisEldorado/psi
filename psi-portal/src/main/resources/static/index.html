@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title th:text="${systemName}"></title>
+
+    <!-- Bootstrap -->
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="/webjars/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="/webjars/nprogress/nprogress.css" rel="stylesheet">
+    <!--<link href="/webjars/animate/animate.min.css" rel="stylesheet">-->
+    <link href="/webjars/datatables/css/dataTables.bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="css/custom.min.css" rel="stylesheet">
+    <link href="iCheck/skins/flat/green.css" rel="stylesheet">
+</head>
+
+<body class="">
+<div class="container body">
+    <div data-th-replace="fragments/loginForm::loginForm">login form</div>
+
+    <!--<div data-th-replace="fragments/ContentFooter::ContentFooter"></div>-->
+
+    <div data-th-replace="fragments/RegisterForm::RegisterForm"></div>
+</div>
+
+<!-- jQuery -->
+<script src="/webjars/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="/webjars/fastclick/fastclick.js"></script>
+<!-- NProgress -->
+<script src="/webjars/nprogress/nprogress.js"></script>
+<script src="/webjars/datatables/js/jquery.dataTables.min.js"></script>
+<script src="/webjars/datatables/js/dataTables.bootstrap.min.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="js/wizard/wizard.js"></script>
+<script src="js/custom.min.js"></script>
+<script src="iCheck/icheck.min.js"></script>
+</body>
+</html>

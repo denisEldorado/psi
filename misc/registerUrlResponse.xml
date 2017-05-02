@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response xmlns="http://api-v1.gen.mm.vodafone.com/mminterface/response">
+    <ResponseCode>100000014</ResponseCode>
+    <ResponseDesc>Missing mandatory parameter:ResponseType,ResponseType indicates the parameter's name.</ResponseDesc>
+    <ConversationID></ConversationID>
+    <OriginatorConversationID></OriginatorConversationID>
+    <ServiceStatus>0</ServiceStatus>
+</response>

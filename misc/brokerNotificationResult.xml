@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Result>
+    <ResultType>Completed</ResultType>
+    <ResultCode>0</ResultCode>
+    <ResultDesc>Success</ResultDesc>
+    <OriginatorConversationID>R9-2-eq-a7cb-q277</OriginatorConversationID>
+    <ConversationID>61da40ad-7e96-4889-83c4-1ea77091f8ec</ConversationID>
+    <TransactionID>X-IO213</TransactionID>
+    <ResultParameters>
+        <Parameter>
+            <Key xmlns="http://api-v1.gen.mm.vodafone.com/mminterface/request">Amount</Key>
+            <Value xmlns="http://api-v1.gen.mm.vodafone.com/mminterface/request">Ksh200.00</Value>
+        </Parameter>
+        <Parameter>
+            <Key xmlns="http://api-v1.gen.mm.vodafone.com/mminterface/request">Transaction Datetime</Key>
+            <Value xmlns="http://api-v1.gen.mm.vodafone.com/mminterface/request">22/10/2014 20:55:24</Value>
+        </Parameter>
+        <Parameter>
+            <Key xmlns="http://api-v1.gen.mm.vodafone.com/mminterface/request">Working Account Available Funds</Key>
+            <Value xmlns="http://api-v1.gen.mm.vodafone.com/mminterface/request">2338002.5100</Value>
+        </Parameter>
+        <Parameter>
+            <Key xmlns="http://api-v1.gen.mm.vodafone.com/mminterface/request">Charges Paid Account
+                Available Funds
+            </Key>
+            <Value xmlns="http://api-v1.gen.mm.vodafone.com/mminterface/request">0.0000</Value>
+        </Parameter>
+        <Parameter>
+            <Key xmlns="http://api-v1.gen.mm.vodafone.com/mminterface/request">Utility Account Available Funds</Key>
+            <Value xmlns="http://api-v1.gen.mm.vodafone.com/mminterface/request">461898.0000</Value>
+        </Parameter>
+    </ResultParameters>
+    <ReferenceData>
+        <ReferenceItem>
+            <Key xmlns="http://api-v1.gen.mm.vodafone.com/mminterface/request">QueueTimeoutURL</Key>
+            <Value
+                    xmlns="http://apiv1.gen.mm.vodafone.com/mminterface/request">
+                http://127.0.0.1:7021/mpesa/results
+            </Value>
+        </ReferenceItem>
+    </ReferenceData>
+</Result>

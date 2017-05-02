@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.Oracle12cDialect</property>
+        <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1591:dev02db</property>
+        <property name="hibernate.connection.pool_size">3</property>
+        <property name="hibernate.cache.provider_class">com.hazelcast.hibernate.HazelcastCacheRegionFactory</property>
+        <property name="hibernate.cache.provider_configuration_file_resource_path">/ehcache.xml</property>
+        <!--<mapping resource="orm.xml"/>-->
+        <mapping class="org.muhia.app.psi.orm.model.DefineSecurityQuestions"/>
+        <mapping class="org.muhia.app.psi.orm.model.Organizations"/>
+        <mapping class="org.muhia.app.psi.orm.model.OrganizationTypes"/>
+        <mapping class="org.muhia.app.psi.orm.model.PasswordResetTokens"/>
+        <!--<mapping class="org.muhia.app.psi.orm.model.PersistentLogins"/>-->
+        <mapping class="org.muhia.app.psi.orm.model.Principals"/>
+        <mapping class="org.muhia.app.psi.orm.model.PrincipalTypes"/>
+        <mapping class="org.muhia.app.psi.orm.model.Priviledges"/>
+        <mapping class="org.muhia.app.psi.orm.model.Roles"/>
+        <mapping class="org.muhia.app.psi.orm.model.RolePrivileges"/>
+        <mapping class="org.muhia.app.psi.orm.model.UserRoles"/>
+        <mapping class="org.muhia.app.psi.orm.model.UserSecurityQuestions"/>
+        <mapping class="org.muhia.app.psi.orm.model.UssdSessions"/>
+        <mapping class="org.muhia.app.psi.orm.model.VerificationTokens"/>
+        <mapping class="org.muhia.app.psi.orm.model.ApplicabilityTypes"/>
+        <mapping class="org.muhia.app.psi.orm.model.ApplicationDst"/>
+        <mapping class="org.muhia.app.psi.orm.model.ApplicationSrc"/>
+        <mapping class="org.muhia.app.psi.orm.model.BundleMappingGroups"/>
+        <mapping class="org.muhia.app.psi.orm.model.InterestRate"/>
+        <mapping class="org.muhia.app.psi.orm.model.MappingGroupsItems"/>
+        <mapping class="org.muhia.app.psi.orm.model.MappingGroupsTypes"/>
+        <mapping class="org.muhia.app.psi.orm.model.MappingSubGroups"/>
+        <mapping class="org.muhia.app.psi.orm.model.MaxLimit"/>
+        <mapping class="org.muhia.app.psi.orm.model.ObaPayErrorCode"/>
+        <mapping class="org.muhia.app.psi.orm.model.ParameterTypes"/>
+        <mapping class="org.muhia.app.psi.orm.model.PayBackPeriod"/>
+        <mapping class="org.muhia.app.psi.orm.model.PrdApplicabilityTypes"/>
+        <mapping class="org.muhia.app.psi.orm.model.PricingProfileTier"/>
+        <mapping class="org.muhia.app.psi.orm.model.ProductsMaster"/>
+        <mapping class="org.muhia.app.psi.orm.model.ProductCategory"/>
+        <mapping class="org.muhia.app.psi.orm.model.ProductParameters"/>
+        <mapping class="org.muhia.app.psi.orm.model.ProductPrvTemplates"/>
+        <mapping class="org.muhia.app.psi.orm.model.ProductTypes"/>
+        <mapping class="org.muhia.app.psi.orm.model.RegistrationDocs"/>
+        <mapping class="org.muhia.app.psi.orm.model.SmsNotification"/>
+        <mapping class="org.muhia.app.psi.orm.model.SmsNotifCondition"/>
+        <mapping class="org.muhia.app.psi.orm.model.SmsResponses"/>
+        <mapping class="org.muhia.app.psi.orm.model.WalletTypes"/>
+        <mapping class="org.muhia.app.psi.orm.model.OrderMaster"/>
+        <mapping class="org.muhia.app.psi.orm.model.PricingProfile"/>
+        <mapping class="org.muhia.app.psi.orm.model.RecurringOrders"/>
+        <mapping class="org.muhia.app.psi.orm.model.RequestTypes"/>
+        <mapping class="org.muhia.app.psi.orm.model.ServiceRequests"/>
+        <mapping class="org.muhia.app.psi.orm.model.BeneficiaryTypes"/>
+        <mapping class="org.muhia.app.psi.orm.model.ContributionMethods"/>
+        <mapping class="org.muhia.app.psi.orm.model.PrincipalsBanking"/>
+        <mapping class="org.muhia.app.psi.orm.model.PrincipalsContributions"/>
+        <mapping class="org.muhia.app.psi.orm.model.PrincipalsGuarantor"/>
+        <mapping class="org.muhia.app.psi.orm.model.PrincipalsLoans"/>
+        <mapping class="org.muhia.app.psi.orm.model.PrincipalsSavingsTarget"/>
+        <mapping class="org.muhia.app.psi.orm.model.RegisteredSaccos"/>
+        <mapping class="org.muhia.app.psi.orm.model.RegistrationDetails"/>
+        <mapping class="org.muhia.app.psi.orm.model.RepaymentSchedule"/>
+        <mapping class="org.muhia.app.psi.orm.model.SaccoRegistration"/>
+        <mapping class="org.muhia.app.psi.orm.model.SavingsInterval"/>
+        <mapping class="org.muhia.app.psi.orm.model.SavingsTargetType"/>
+        <mapping class="org.muhia.app.psi.orm.model.SubscriberWhitelist"/>
+        <mapping class="org.muhia.app.psi.orm.model.SysLog"/>
+        <mapping class="org.muhia.app.psi.orm.model.TasksList"/>
+        <mapping class="org.muhia.app.psi.orm.model.UsercreateRequests"/>
+        <mapping class="org.muhia.app.psi.orm.model.Users"/>
+        <mapping class="org.muhia.app.psi.orm.model.UserBeneficiaries"/>
+        <mapping class="org.muhia.app.psi.orm.model.UssdCodes"/>
+        <mapping class="org.muhia.app.psi.orm.model.UssdCodeImsi"/>
+        <mapping class="org.muhia.app.psi.orm.model.UssdImsiRanges"/>
+        <mapping class="org.muhia.app.psi.orm.model.UssdMenus"/>
+        <!--<mapping class="org.muhia.app.psi.orm.model.UssdMenusHistory"/>-->
+        <mapping class="org.muhia.app.psi.orm.model.MomAmServiceDetails"/>
+        <mapping class="org.muhia.app.psi.orm.model.MomGsmItemised"/>
+        <mapping class="org.muhia.app.psi.orm.model.MomGsmServiceSummary"/>
+        <mapping class="org.muhia.app.psi.orm.model.MomItemisedAirtelMoney"/>
+        <mapping class="org.muhia.app.psi.orm.model.MomRegistry"/>
+        <mapping class="org.muhia.app.psi.orm.model.MomTransactionSummary"/>
+        <mapping class="org.muhia.app.psi.orm.model.LoggingErrors"/>
+        <mapping class="org.muhia.app.psi.orm.model.SiteStatistics"/>
+        <mapping class="org.muhia.app.psi.orm.model.SmsRegistry"/>
+        <mapping class="org.muhia.app.psi.orm.model.UssdRequests"/>
+        <mapping class="org.muhia.app.psi.orm.model.UssdResponses"/>
+        
+        <mapping class="org.muhia.app.psi.orm.model.NetworkOperators"/>
+        <mapping class="org.muhia.app.psi.orm.model.ServerSettings"/>
+        <mapping class="org.muhia.app.psi.orm.model.TaskTypes"/>
+        <mapping class="org.muhia.app.psi.orm.model.Titles"/>
+        <mapping class="org.muhia.app.psi.orm.model.UssdMenuImsiCodeVw"/>
+        <mapping class="org.muhia.app.psi.orm.model.MobileMoneyRequests"/>
+        <mapping class="org.muhia.app.psi.orm.model.AccountTypes"/>
+        <mapping class="org.muhia.app.psi.orm.model.Banks"/>
+        <mapping class="org.muhia.app.psi.orm.model.BankAccounts"/>
+        <mapping class="org.muhia.app.psi.orm.model.BankBranches"/>
+        <mapping class="org.muhia.app.psi.orm.model.BankCharges"/>
+        <mapping class="org.muhia.app.psi.orm.model.ChargeTypes"/>
+        <mapping class="org.muhia.app.psi.orm.model.Currencies"/>
+        <mapping class="org.muhia.app.psi.orm.model.ExchangeRates"/>
+        <mapping class="org.muhia.app.psi.orm.model.TransactionRequests"/>
+        <mapping class="org.muhia.app.psi.orm.model.MobileMoneyProviders"/>
+        <mapping class="org.muhia.app.psi.orm.model.TransactionCategories"/>
+        <mapping class="org.muhia.app.psi.orm.model.MobileMoneyResponses"/>
+        <mapping class="org.muhia.app.psi.orm.model.CountryCodes"/>
+        <mapping class="org.muhia.app.psi.orm.model.CbmBankCharges"/>
+        <!-- <property name="connection.username"/> -->
+        <!-- <property name="connection.password"/> -->
+
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hbm2ddl.auto">update</property> -->
+    </session-factory>
+</hibernate-configuration>

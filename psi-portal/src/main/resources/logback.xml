@@ -1,0 +1,57 @@
+<configuration>
+    <!--<include resource="org/springframework/boot/logging/logback/base.xml"/>-->
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener"/>
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+        <resetJUL>true</resetJUL>
+    </contextListener>
+    <appender name="FILE"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--<file>file:${TAUCONFIG}/logs/tau.log</file>-->
+        <!--<file>tau.log</file>-->
+        <file>../logs/spring-psi.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!--<Pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>-->
+            <pattern>%date|%-5level|PORTAL|[%thread] |%-30.30logger{0}\(%line\) |%msg%n</pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <!--<FileNamePattern>file:${TAUCONFIG}/logs/tau.%i.log.zip</FileNamePattern>-->
+            <FileNamePattern>../logs/spring-psi.%i.log.zip</FileNamePattern>
+            <MinIndex>1</MinIndex>
+            <MaxIndex>100</MaxIndex>
+        </rollingPolicy>
+
+        <triggeringPolicy
+                class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>200MB</MaxFileSize>
+        </triggeringPolicy>
+
+    </appender>
+
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!--<Pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} %-5level %logger{36} - %msg%n      </Pattern>-->
+            <pattern>%date|%-5level|PORTAL|[%thread] |%-30.30logger{0}\(%line\) |%msg%n</pattern>
+        </encoder>
+    </appender>
+
+
+    <logger name="org.muhia.app.psi.portal" level="INFO"/>
+    <logger name="org.muhia.app.psi.orm.model.SmsRegistry" level="TRACE"/>
+    <logger name="org.muhia.app.psi.orm.repo.SmsRegistryRepository" level="TRACE"/>
+    <logger name="org.muhia.app.psi.portal.eventbus" level="TRACE"/>
+    <logger name="org.springframework.ws.client.MessageTracing.sent" level="TRACE"/>
+    <logger name="org.springframework.ws.client.MessageTracing.received" level="TRACE"/>
+    <logger name="org.springframework.ws.server.MessageTracing" level="ERROR"/>
+    <logger name="com.sun.xml.internal.messaging.saaj.soap" level="ERROR"/>
+    <logger name="org.springframework" level="INFO"/>
+    <logger name="org.hibernate.engine.internal" level="WARN"/>
+
+    <logger name="org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor" level="INFO"/>
+
+    <root level="INFO">
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
